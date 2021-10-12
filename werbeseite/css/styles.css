@@ -1,35 +1,60 @@
+/*Color Codes
+    turquoise Fh: #6cb3b9
+ */
+
+
 /* luis css*/
 .h-grid{
     display: grid;
-    grid-template-columns: 21.9em auto;
-    grid-column-gap: 0.1em;
+    grid-template-columns: auto auto;
 }
 .h-grid-field{
+    width: 0em;
 
 }
 .fh_logo{
-    height: 10em;
-    width: 18em;
+    height: 200px;
+    width: 320px;
 }
 .h-grid-inner-grid{
     display: grid;
     grid-template-columns: auto auto auto auto auto;
-    border: 0.1em solid;
-    grid-column-gap: 1.8em;
+    grid-column-gap: 1.5em;
     justify-content:center;
     align-content: center;
-    width: 55em;
+    width: 50em;
 }
 .h-grid-inner-field{
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9em;
     justify-content: center;
     align-content: center;
 }
 a.header_links{
     font-size: 2em;
-    text-align:center;
+    text-align: center;
+}
+a.header_links:link{
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
+a.header_links:visited{
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
+a.header_links:visited:hover{
+    cursor: auto;
+    color: #6cb3b9;
+}
+a.header_links:link:hover{
+    cursor: auto;
+    color: #6cb3b9;
 }
 .title_picture{
-    margin-top: 3em;
+    margin-top: 0em;
     display: flex;
     justify-content: center;
     align-items:center;
@@ -112,6 +137,7 @@ h3{
 }
 .input:hover{
   background: #E1E8EB;
+    border-color: #6cb3b9;
 }
 
 .sel{
@@ -137,8 +163,8 @@ h3{
   height: 45px;
 }
 .subm:hover{
-  background-color: #3DB2FF;
-  box-shadow: 0px 15px 20px rgba(53, 141, 200, 1);
+  background-color: #6cb3b9;
+  box-shadow: 0px 15px 20px #6cb3b9;
   color: #fff;
   transform: translateY(-7px);
 }
