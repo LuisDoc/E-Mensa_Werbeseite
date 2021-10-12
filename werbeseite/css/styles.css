@@ -37,6 +37,7 @@ a.header_links{
 .title_picture_itself{
     width: 50em;
     height: 30em;
+    box-shadow: -1px 5px 9px 4px rgba(0,0,0,.7);
 }
 .ankuendigungen_heading,
 .speisen_heading{
@@ -62,6 +63,9 @@ a.header_links{
 }
 /*----------------------------------------------*/
 /*--Nilusches css*/
+html{
+    scroll-behavior: smooth;
+}
 body{
   text-align: center;
   font-family: 'Lato', sans-serif;
@@ -92,7 +96,6 @@ h3{
   width:49em;
   text-align: left;
   border: solid 1px grey;
-  box-shadow: auto;
   padding:10px;
   margin-bottom:5em;
   box-shadow:  -1px 5px 9px 4px rgba(0,0,0,.7);
@@ -138,4 +141,24 @@ h3{
   box-shadow: 0px 15px 20px rgba(53, 141, 200, 1);
   color: #fff;
   transform: translateY(-7px);
+}
+
+.Emensa{
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    grid-column-gap: 5px;
+    grid-template-columns: auto auto auto;
+}
+.grid-mensa{
+    text-align: center;
+    width: 16.5em;
+    height: 5em;
+    padding-top:3.5em;
+    font-size: larger;
+    font-weight: bold;
+
+}
+.dia{
+    box-shadow: -1px 5px 9px 4px rgba(0,0,0,.7);
 }
