@@ -161,4 +161,12 @@ h3{
 }
 .dia{
     box-shadow: -1px 5px 9px 4px rgba(0,0,0,.7);
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.dia:hover{
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
 }
