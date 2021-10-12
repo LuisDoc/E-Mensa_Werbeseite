@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang=de dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Ihre E-Mensa</title>
+    <style>
+        .h-grid{
+            display: grid;
+            grid-template-columns: 21.9em auto;
+            grid-column-gap: 0.1em;
+        }
+        .h-grid-field{
+
+        }
+        .fh_logo{
+            height: 10em;
+            width: 18em;
+        }
+        .h-grid-inner-grid{
+            display: grid;
+            grid-template-columns: auto auto auto auto auto;
+            border: 0.1em solid;
+            grid-column-gap: 1.8em;
+            justify-content:center;
+            align-content: center;
+            width: 50em;
+        }
+        .h-grid-inner-field{
+            justify-content: center;
+            align-content: center;
+        }
+        a.header_links{
+            font-size: 2em;
+            text-align:center;
+        }
+        .title_picture{
+            margin-top: 3em;
+            display: flex;
+            justify-content: center;
+            align-items:center;
+        }
+        .title_picture_itself{
+            width: 50em;
+            height: 30em;
+        }
+        .ankuendigungen_heading,
+        .speisen_heading{
+            margin-top: 3em;
+            text-align:center;
+        }
+        .ankuendigungen_text{
+            display: grid;
+            grid-template-rows: auto ;
+            justify-content: center;
+            align-content:center;
+        }
+        .ankuendigungen_text_field{
+            justify-content: center;
+            align-content:center;
+            border: 1px solid;
+            width: 50em;
+        }
+        .speisen_tabelle{
+            display:flex;
+            justify-content: center;
+            align-content: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Section für den Header -->
+<section>
+<!-- Basic Grid -->
+<div class= "h-grid">
+    <div class="h-grid-field">^
+        <img class ="fh_logo"src="sources/Logo FH-Aachen.jpg"
+             alt="">
+    </div>
+    <!--Inneres Grid -->
+    <div class="h-grid-inner-grid">
+        <div class="h-grid-inner-field">
+            <a href="" class = "header_links">Ankündigung</a>
+        </div>
+        <div class="h-grid-inner-field">
+            <a href="" class = "header_links">Speisen</a>
+        </div>
+        <div class="h-grid-inner-field">
+            <a href="" class = "header_links">Zahlen</a>
+        </div>
+        <div class="h-grid-inner-field">
+            <a href="" class = "header_links">Kontakt</a>
+        </div>
+        <div class="h-grid-inner-field">
+            <a href="" class = "header_links">Wichtig für Uns</a>
+        </div>
+    </div>
+</div>
+</section>
+
+
+<!-- Section für das Image -->
+<section>
+    <div class = "title_picture">
+        <img class = title_picture_itself src="sources/mensa-fh-aachen.jpg"
+             alt="">
+    </div>
+</section>
+
+
+<!-- Section für Ankündigungen -->
+<section>
+    <h3 class = ankuendigungen_heading>
+        Bald gibt es Essen auch online :)
+        </h3>
+    <div class ="ankuendigungen_text">
+        <div class ="ankuendigungen_text_field">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+            sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+            Stet clita kasd gubergren,
+            no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum.
+            Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        </div>
+    </div>
+</section>
+
+
+<!-- Section für Speisen -->
+<section>
+    <h3 class = "speisen_heading">
+            Köstlichkeiten, die Sie erwarten
+    </h3>
+    <!-- Anlegen einer Tabelle -->
+    <div class ="speisen_tabelle">
+        <table border ="1">
+            <thead>
+            <th width = "600"></th>
+            <th>Preise intern</th>
+            <th>Preise extern</th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Rindfleisch mit Bambus, Kaiserschoten <br>
+                    und rotem Paprika, dazu Mie Nudeln</td>
+                <td>3,50</td>
+                <td>6,20</td>
+            </tr>
+            <tr>
+                <td>Spinatrisotto mit kleinen Samosateigecken <br>
+                    und gemischter Salat</td>
+                <td>2,90</td>
+                <td>5,30</td>
+            </tr>
+            <tr>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+</section>
+
+<!-- Ab hier dann dein Part -->
+
+
+</body>
+</html>
