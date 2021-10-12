@@ -3,70 +3,10 @@
 <head>
     <meta charset="utf-8">
     <title>Ihre E-Mensa</title>
-    <style>
-        .h-grid{
-            display: grid;
-            grid-template-columns: 21.9em auto;
-            grid-column-gap: 0.1em;
-        }
-        .h-grid-field{
-
-        }
-        .fh_logo{
-            height: 10em;
-            width: 18em;
-        }
-        .h-grid-inner-grid{
-            display: grid;
-            grid-template-columns: auto auto auto auto auto;
-            border: 0.1em solid;
-            grid-column-gap: 1.8em;
-            justify-content:center;
-            align-content: center;
-            width: 50em;
-        }
-        .h-grid-inner-field{
-            justify-content: center;
-            align-content: center;
-        }
-        a.header_links{
-            font-size: 2em;
-            text-align:center;
-        }
-        .title_picture{
-            margin-top: 3em;
-            display: flex;
-            justify-content: center;
-            align-items:center;
-        }
-        .title_picture_itself{
-            width: 50em;
-            height: 30em;
-        }
-        .ankuendigungen_heading,
-        .speisen_heading{
-            margin-top: 3em;
-            text-align:center;
-            font-size: 2em;
-        }
-        .ankuendigungen_text{
-            display: grid;
-            grid-template-rows: auto ;
-            justify-content: center;
-            align-content:center;
-        }
-        .ankuendigungen_text_field{
-            justify-content: center;
-            align-content:center;
-            border: 1px solid;
-            width: 50em;
-        }
-        .speisen_tabelle{
-            display:flex;
-            justify-content: center;
-            align-content: center;
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -167,7 +107,20 @@
 </section>
 
 <!-- Ab hier dann dein Part -->
-
+<!-- Der E-Mensa part kommt noch-->
+<div class="Formular">
+    <h3 class="formtitle">Interesse geweckt? Wir informieren sie!</h3>
+        <form class="formParagraph" method="post">
+            <input class="input" type="text" name="Vorname" value="" placeholder="Vorname">
+            <input class="input" type="email" name="email" value="" placeholder="Email">
+            <select class="sel" name="language">
+                <option value="Deutsch">Deutsch</option>
+                <option value="Englisch">Englisch</option>
+            </select><br><br>
+            <input type="checkbox" name="datenschutz" required>Den Datenschutzbestimmungen stimme ich zu
+            <input class="subm" type="submit" name="Newsletter" value="Zum Newsletter anmelden">
+        </form>
+</div>
 
 </body>
 </html>
