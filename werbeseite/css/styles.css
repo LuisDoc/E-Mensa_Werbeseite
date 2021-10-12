@@ -1,9 +1,8 @@
 /*Color Codes
     turquoise Fh: #6cb3b9
+    shadow Fh: rgba(78, 130, 135, 1)
  */
 
-
-/* luis css*/
 .h-grid{
     display: grid;
     grid-template-columns: auto auto;
@@ -86,8 +85,7 @@ a.header_links:link:hover{
     justify-content: center;
     align-content: center;
 }
-/*----------------------------------------------*/
-/*--Nilusches css*/
+
 html{
     scroll-behavior: smooth;
 }
@@ -164,7 +162,7 @@ h3{
 }
 .subm:hover{
   background-color: #6cb3b9;
-  box-shadow: 0px 15px 20px #6cb3b9;
+  box-shadow: 0px 15px 20px rgba(78, 130, 135, 1);
   color: #fff;
   transform: translateY(-7px);
 }
