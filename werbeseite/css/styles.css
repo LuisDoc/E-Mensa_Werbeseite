@@ -3,61 +3,84 @@
     shadow Fh: rgba(78, 130, 135, 1)
 
  */
-.h-grid{
-    display: grid;
-    grid-template-columns: auto auto;
-}
-.h-grid-field{
-    width: 0em;
 
+
+/*
+    Allgemein
+ */
+html{
+    scroll-behavior: smooth;
 }
-.fh_logo{
-    height: 200px;
-    width: 320px;
-}
-.h-grid-inner-grid{
-    display: grid;
-    grid-template-columns: auto auto auto auto auto;
-    grid-column-gap: 1.5em;
-    justify-content:center;
-    align-content: center;
-    width: 50em;
-}
-.h-grid-inner-field{
+body{
     text-align: center;
     font-family: 'Lato', sans-serif;
-    font-size: 0.9em;
-    justify-content: center;
+}
+h1{
+    margin:auto;
+    margin-top:20px;
+    margin-bottom: 10px;
+    text-align: center;
+    align-content: center;
+    width:25em;
+}
+h3{
+    margin:auto;
+    margin-top:20px;
+    margin-bottom: 10px;
+    text-align: center;
+    align-content: center;
+    width:25em;
+}
+/*
+    Header
+  */
+.header{
+    background: #6cb3b9;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 320px auto 320px;
+    height: 100px;
+}
+.header_left_picture{
+}
+.fh_logo{
+    display: flex;
+    justify-content: left;
+    height: 100px;
+    width: 226px;
+
+}
+.header_menu_reiter{
+    margin-left: 1.5em;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    justify-content:center;
     align-content: center;
 }
-a.header_links{
-    font-size: 2em;
-    text-align: center;
-}
-a.header_links:link{
-    text-decoration: inherit;
-    color: inherit;
-    cursor: pointer;
-}
+a.header_links,
 a.header_links:visited{
-    text-decoration: inherit;
-    color: inherit;
-    cursor: pointer;
+    font-size: 20px;
+    margin-right: 2em;
+
+
+    padding: 14px 25px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+    align-content: center;
+    justfiy-content: center;
 }
-a.header_links:visited:hover{
-    transition: 1s;
-    cursor: auto;
-    color: #6cb3b9;
-    text-shadow: 0px 0px 40px  rgba(78, 130, 135, 0.5);
+a.header_links:hover{
+    color:white;
+    background-color: rgba(46, 75, 78, 0.8);
 }
-a.header_links:link:hover{
-    transition: 0.3s;
-    cursor: auto;
-    color: #6cb3b9;
-    text-shadow: 0px 0px 40px  rgba(78, 130, 135, 0.5);
-}
+/*
+    Title Picture
+ */
 .title_picture{
-    margin-top: 0em;
+    margin-top: 3em;
     display: flex;
     justify-content: center;
     align-items:center;
@@ -67,6 +90,9 @@ a.header_links:link:hover{
     height: 30em;
     box-shadow: -1px 5px 9px 4px rgba(0,0,0,.7);
 }
+/*
+    Ankuendigungen
+ */
 .ankuendigungen_heading,
 .speisen_heading{
     margin-top: 3em;
@@ -88,35 +114,79 @@ a.header_links:link:hover{
     transition: 0.5s;
     transform: scale(1.15);
 }
+/*
+    Speisekarte
+ */
 .speisen_tabelle{
     display:flex;
     justify-content: center;
     align-content: center;
 }
+#menu{
+    border-collapse: collapse;
+    border:1px solid rgba(46, 75, 78, 0.8);
+}
+#menu td, #menu th{
 
-html{
-    scroll-behavior: smooth;
+    padding-left:3.25em;
+    padding-right:3.25em;
+
 }
-body{
-  text-align: center;
-  font-family: 'Lato', sans-serif;
+#menu tr{
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+    border:1px solid rgba(46, 75, 78, 0.8);
 }
-h1{
-    margin:auto;
-    margin-top:20px;
-    margin-bottom: 10px;
-    text-align: center;
+
+#menu tr:hover{
+    background-color: #ddd;
+
+}
+#menu th{
+    background-color:#6cb3b9;
+    color:white;
+
+}
+
+
+/*
+    Mensa in Zahlen
+ */
+.Emensa_heading{
+    margin-top: 3em;
+}
+.Emensa{
+    display: grid;
     align-content: center;
-    width:25em;
+    justify-content: center;
+    grid-column-gap: 5px;
+    grid-template-columns: auto auto auto;
 }
-h3{
-  margin:auto;
-  margin-top:20px;
-  margin-bottom: 10px;
-  text-align: center;
-  align-content: center;
-  width:25em;
+.grid-mensa{
+    text-align: center;
+    width: 16.5em;
+    height: 5em;
+    padding-top:3.5em;
+    font-size: larger;
+    font-weight: bold;
+
 }
+.dia{
+    box-shadow: -1px 5px 9px 4px rgba(0,0,0,.7);
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.dia:hover{
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+}
+
+
+/*
+    Newsletter Formular
+ */
 .formtitle{
 
   margin:auto;
@@ -182,34 +252,9 @@ h3{
   transform: translateY(-7px);
 }
 
-.Emensa{
-    display: grid;
-    align-content: center;
-    justify-content: center;
-    grid-column-gap: 5px;
-    grid-template-columns: auto auto auto;
-}
-.grid-mensa{
-    text-align: center;
-    width: 16.5em;
-    height: 5em;
-    padding-top:3.5em;
-    font-size: larger;
-    font-weight: bold;
-
-}
-.dia{
-    box-shadow: -1px 5px 9px 4px rgba(0,0,0,.7);
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-    -webkit-transition: .3s ease-in-out;
-    transition: .3s ease-in-out;
-}
-.dia:hover{
-    -webkit-filter: grayscale(0);
-    filter: grayscale(0);
-}
-
+/*
+    Wichtig für uns
+ */
 .wichtig{
     margin:auto;
     width: 25em;
@@ -236,21 +281,31 @@ h3{
     color: #6cb3b9;
 }
 
+/*
+    Footer
+ */
+nav{
+    margin-top: 0.9em;
+}
 .foot{
-    margin:auto;
+    margin: auto;
+    margin-bottom: -0.8em;
     margin-top: 5em;
     width:100%;
-    height:12em;
+
+    height: 100px;
     background-color: #6cb3b9;
     border:solid 1px rgba(46, 75, 78, 0.8);
     border-radius: 5px;
 }
 
 .social{
+    margin-left: 10em;
     padding-top: 2em;
 }
 .icon{
     margin-left: 1em;
+    margin-bottom: -1em;
     -webkit-filter: grayscale(75%);
     filter: grayscale(75%);
     -webkit-transition: .3s ease-in-out;
@@ -263,13 +318,13 @@ h3{
     -webkit-filter: grayscale(0);
     filter: grayscale(0);
 }
-nav{
-    padding:3em;
+.footer_links{
+    margin-left: 29em;
+    margin-bottom: 18em;
 }
-
 .affiliates, .affiliates:visited{
     font-size: 20px;
-    margin-right: 10em;
+    margin-right: 1em;
     padding: 14px 25px;
     border-radius: 5px;
     margin-top:-4em;
@@ -277,6 +332,8 @@ nav{
     text-decoration: none;
     -webkit-transition: .3s ease-in-out;
     transition: .3s ease-in-out;
+
+
 }
 
 .affiliates:hover{
@@ -286,29 +343,4 @@ nav{
 .vl{
     color:rgba(46, 75, 78, 0.8);
     height:20px;
-}
-#menu{
-    border-collapse: collapse;
-    border:1px solid rgba(46, 75, 78, 0.8);
-}
-#menu td, #menu th{
-
-    padding-left:3.25em;
-    padding-right:3.25em;
-
-}
-#menu tr{
-    -webkit-transition: .2s ease-in-out;
-    transition: .2s ease-in-out;
-    border:1px solid rgba(46, 75, 78, 0.8);
-}
-
-#menu tr:hover{
-    background-color: #ddd;
-
-}
-#menu th{
-    background-color:#6cb3b9;
-    color:white;
-
 }
