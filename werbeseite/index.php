@@ -83,18 +83,33 @@
 </div>
 
 
-<div class="Formular">
+<div class="Formular" id="Newsletter">
     <h3 class="formtitle"><a name ="Newsletter">Interesse geweckt?  Wir informieren sie!</a></h3>
-    <form class="formParagraph" method="post">
+    <form class="formParagraph" action="newsletter.php" method="post">
         <input class="input" type="text" name="Vorname" value="" placeholder="Vorname" required>
-        <input class="input" type="email" name="email" value="" placeholder="Email" required>
+        <input class="input" type="text" name="email" value="" placeholder="Email" required>
         <select class="sel" name="language">
             <option value="Deutsch">Deutsch</option>
             <option value="Englisch">Englisch</option>
         </select><br><br>
         <input type="checkbox" name="datenschutz" required>Den Datenschutzbestimmungen stimme ich zu
         <input class="subm" type="submit" name="Newsletter" value="Zum Newsletter anmelden">
+
     </form>
+    <?php
+    if(isset($_GET['error'])){
+        if($_GET['error']=="invalidUsername"){
+            echo '<p class="errormessage"> Benutzername nicht valide<br></p>';
+        }
+        if($_GET['error']=="invalidEmail"){
+            echo '<p class="errormessage"> Email nicht valide<br> </p>';
+        }
+        if($_GET['error']=="success"){
+            echo '<p class="successmessage"> Anmeldung für den Newsletter erfolgreich<br></p>';
+        }
+    }
+
+    ?>
 </div>
 <h3><a name = "Wichtig">Das ist uns wichtig</a></h3>
 <section class="wichtig">

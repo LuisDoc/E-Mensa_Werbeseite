@@ -15,7 +15,10 @@ function print_menu(){
     $menu = [
         1 => ["Rindfleisch mit Bambus,<br> Kaiserschoten und rotem Paprika, dazu Mie Nudeln", 3.50, 6.20],
         2 => ["Spinatrisotto mit kleinen Samosateigecken <br> und gemischter Salat", 2.90,5.30],
-        3 => ["...", "...","..."]
+        4 => ["Nudeln mit Reis und Salz<br>",4.99, 8.60],
+        5 => ["Portion Mayonaise aber Rückwärts", 3.50, 6.50],
+        6 => ["Wassermelone mit Salz", 4.50, 7.50],
+        7 => ["...", "...","..."]
     ];
 
     foreach($menu as $key=> $value){
