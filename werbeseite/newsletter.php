@@ -57,6 +57,7 @@ if(isset($_POST['Newsletter'])){
     } catch (Exception $e) {
         echo "Failed to deliver Mail";
     }*/
+    header("Location: index.php?error=success#Newsletter");
 
 }else{
     header("Location:index.php");
