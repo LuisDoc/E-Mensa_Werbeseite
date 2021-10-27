@@ -11,22 +11,9 @@
 <body>
 
 <!-- Section für den Header -->
-<section>
-<!-- Basic Grid -->
-<div class= "header">
-    <div class="header_left_picture">
-        <img class ="fh_logo"   src="sources/Logo_FH-Aachen.jpg" alt="logo">
-    </div>
-    <!--Inneres Grid -->
-    <div class="header_menu_reiter">
-        <a href="#Ankündigungen" class = "header_links">Ankündigung</a>
-        <a href="#Speisekarte" class = "header_links">Speisen</a>
-        <a href="#Zahlen" class = "header_links">Zahlen</a>
-        <a href="#Newsletter" class = "header_links">Kontakt</a>
-        <a href="#Wichtig" class = "header_links">Wichtig für Uns</a>
-    </div>
-</div>
-</section>
+<?php
+    include ("includes/header.inc.php");
+?>
 
 
 <!-- Section für das Image -->
@@ -42,7 +29,7 @@
 <section>
     <h3 class = ankuendigungen_heading>
         <a name ="Ankündigungen">Bald gibt es Essen auch online :)</a>
-        </h3>
+    </h3>
     <div class ="ankuendigungen_text">
         <div class ="ankuendigungen_text_field">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
@@ -109,16 +96,16 @@
 
 <div class="Formular">
     <h3 class="formtitle"><a name ="Newsletter">Interesse geweckt?  Wir informieren sie!</a></h3>
-        <form class="formParagraph" method="post">
-            <input class="input" type="text" name="Vorname" value="" placeholder="Vorname" required>
-            <input class="input" type="email" name="email" value="" placeholder="Email" required>
-            <select class="sel" name="language">
-                <option value="Deutsch">Deutsch</option>
-                <option value="Englisch">Englisch</option>
-            </select><br><br>
-            <input type="checkbox" name="datenschutz" required>Den Datenschutzbestimmungen stimme ich zu
-            <input class="subm" type="submit" name="Newsletter" value="Zum Newsletter anmelden">
-        </form>
+    <form class="formParagraph" method="post">
+        <input class="input" type="text" name="Vorname" value="" placeholder="Vorname" required>
+        <input class="input" type="email" name="email" value="" placeholder="Email" required>
+        <select class="sel" name="language">
+            <option value="Deutsch">Deutsch</option>
+            <option value="Englisch">Englisch</option>
+        </select><br><br>
+        <input type="checkbox" name="datenschutz" required>Den Datenschutzbestimmungen stimme ich zu
+        <input class="subm" type="submit" name="Newsletter" value="Zum Newsletter anmelden">
+    </form>
 </div>
 <h3><a name = "Wichtig">Das ist uns wichtig</a></h3>
 <section class="wichtig">
@@ -131,21 +118,10 @@
     </div>
 </section>
 <h1>Wir freuen uns auf ihren Besuch!</h1>
-<div class="foot">
-        <nav>
-            <span class = "footer_links">
-                <a class="affiliates" href="#">(c) e mensa GmbH</a>
-                <a class="affiliates" href="#"> Do Carmo,&nbsp;&nbsp;Liyanaarachchi </a>
-                <a class="affiliates" href="#">Impressum</a>
-            </span>
-            <span class="social">
-            <a href="#"><img class="icon" src="sources/facebook.png" alt="facebook"></a>
-            <a href="#"><img class="icon" src="sources/googlep.png" alt="googleplus"></a>
-            <a href="#"><img class="icon" src="sources/linkedIn.png" alt="linkedIn"></a>
-            <a href="#"><img class="icon" src="sources/twitter.png" alt="twitter"></a>
-            </span>
-        </nav>
-</div>
+
+<?php
+    include("includes/footer.inc.php");
+?>
 
 </body>
 </html>
