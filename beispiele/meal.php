@@ -1,4 +1,9 @@
 <?php
+/**
+ * Praktikum DBWT. Autoren:
+ * Luis, Diniz Do Carmo, 3275829
+ * Niluschen, Liyanaarachchi, 3272466
+ */
 const GET_PARAM_MIN_STARS = 'search_min_stars';
 const GET_PARAM_SEARCH_TEXT = 'search_text';
 const GET_PARAM_SHOW_DESCRIPTION = 'show_description';
@@ -6,6 +11,40 @@ const GET_PARAM_SHOW_DESCRIPTION = 'show_description';
 /**
  * List of all allergens.
  */
+$_deutsch =[
+
+        'meal' => 'Gericht',
+        'btn_desc' => 'Beschreibung anzeigen/ausblenden',
+        'ratings' => 'Bewertungen (Insgesamt:',
+        'filter' => 'Filter:',
+        'search' => 'Suchen',
+        'author' => 'Author',
+        'text' => 'Text',
+        'stars' =>'Sterne',
+        'allergenes' => 'Allergene',
+        'button_language' => 'DE',
+        'price' =>'Preis',
+        'intern' => 'intern',
+        'extern' => 'extern'
+
+];
+$_englisch = [
+        'meal' => 'Meal',
+        'btn_desc' => 'Show/Hide Description',
+        'ratings' => 'Ratings (in Total: ',
+        'filter' => 'Filter:',
+        'search' => 'Search',
+        'author' => 'Author',
+        'text' => 'Text',
+        'stars' => 'Stars',
+        'allergenes' => 'Allergenes',
+        'button_language' => 'EN',
+        'price' =>'Price',
+    'intern' => 'intern',
+    'extern' => 'extern'
+];
+
+$language= $_deutsch;
 $allergens = [
     11 => 'Gluten',
     12 => 'Krebstiere',
@@ -192,6 +231,28 @@ session_start();
         ?>
             </tbody>
         </table>
+
+    <!-- Preise -->
+    <h1><?php echo $language['price']?></h1>
+    <ul>
+        <?php
+
+        echo $meal['name']."<br>";
+        echo $language['intern'].": ". $language['price'].": ".number_format($meal['price_intern'],2).'€' ."<br>";
+        echo $language['extern'].": ". $language['price'].": ".number_format($meal['price_extern'],2).'€' ."<br>";
+
+        ?>
+    </ul>
+    <h1><?php echo $language['allergenes']?></h1>
+    <ul>
+        <?php
+        $content = 0;
+        //Ausgabe aller Allergene in einer unsortieren Liste
+        foreach($allergens as $content){
+            echo "<li>".$content."</li>";
+        }
+        ?>
+    </ul>
     </body>
 
 
