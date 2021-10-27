@@ -13,33 +13,33 @@ const GET_PARAM_SHOW_DESCRIPTION = 'show_description';
  */
 $_deutsch =[
 
-        'meal' => 'Gericht',
-        'btn_desc' => 'Beschreibung anzeigen/ausblenden',
-        'ratings' => 'Bewertungen (Insgesamt:',
-        'filter' => 'Filter:',
-        'search' => 'Suchen',
-        'author' => 'Author',
-        'text' => 'Text',
-        'stars' =>'Sterne',
-        'allergenes' => 'Allergene',
-        'button_language' => 'DE',
-        'price' =>'Preis',
-        'intern' => 'intern',
-        'extern' => 'extern'
+    'meal' => 'Gericht',
+    'btn_desc' => 'Beschreibung anzeigen/ausblenden',
+    'ratings' => 'Bewertungen (Insgesamt:',
+    'filter' => 'Filter:',
+    'search' => 'Suchen',
+    'author' => 'Author',
+    'text' => 'Text',
+    'stars' =>'Sterne',
+    'allergenes' => 'Allergene',
+    'button_language' => 'DE',
+    'price' =>'Preis',
+    'intern' => 'intern',
+    'extern' => 'extern'
 
 ];
 $_englisch = [
-        'meal' => 'Meal',
-        'btn_desc' => 'Show/Hide Description',
-        'ratings' => 'Ratings (in Total: ',
-        'filter' => 'Filter:',
-        'search' => 'Search',
-        'author' => 'Author',
-        'text' => 'Text',
-        'stars' => 'Stars',
-        'allergenes' => 'Allergenes',
-        'button_language' => 'EN',
-        'price' =>'Price',
+    'meal' => 'Meal',
+    'btn_desc' => 'Show/Hide Description',
+    'ratings' => 'Ratings (in Total: ',
+    'filter' => 'Filter:',
+    'search' => 'Search',
+    'author' => 'Author',
+    'text' => 'Text',
+    'stars' => 'Stars',
+    'allergenes' => 'Allergenes',
+    'button_language' => 'EN',
+    'price' =>'Price',
     'intern' => 'intern',
     'extern' => 'extern'
 ];
@@ -119,141 +119,143 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="de">
-    <head>
-        <meta charset="UTF-8"/>
-        <title><?php echo $language['meal']." ". $meal['name']; ?></title>
-        <style type="text/css">
-            * {
-                font-family: Arial, serif;
-            }
-            .rating {
-                color: darkgray;
-            }
-        </style>
-    </head>
-    <body>
-    <h1><?php echo $language['meal']." ". $meal['name']; ?></h1>
+<head>
+    <meta charset="UTF-8"/>
+    <title><?php echo $language['meal']." ". $meal['name']; ?></title>
+    <style type="text/css">
+        * {
+            font-family: Arial, serif;
+        }
+        .rating {
+            color: darkgray;
+        }
+    </style>
+</head>
+<body>
+<h1>
+    <?php echo $language['meal']." ". $meal['name']; ?>
+</h1>
 
-    <!-- Sprache wechseln -->
-    <form method= "get">
+<!-- Sprache wechseln -->
+<form method= "get">
+    <?php
+    if (isset($_GET['switch_language'])){
+        if(!($_SESSION['switch_language'])){
+            $_SESSION['switch_language'] = 1;
+        }
+        else{
+            $count_language = $_SESSION['switch_language'] + 1;
+            $_SESSION['switch_language'] = $count_language;
+        }
+    }
+    if(($_SESSION['switch_language'] % 2) === 0) {
+        $language = $_englisch;
+    }
+    else{
+        $language = $_deutsch;
+    }
+    ///Auswahl des Buttons
+    $sprache="DE";
+    if($language==$_deutsch){
+        $sprache="DE";
+    }else{
+        $sprache="EN";
+    }
+    echo '<input type="submit" name="switch_language" value="'.$sprache.'">'
+    ?>
+    <!-- Beschreibung aktivieren / deaktivieren -->
+</form>
+<br>
+<br>
+<form method= "get">
+    <?php
+    echo '<input type ="submit" name = "show_description" value ="'.$language['btn_desc'].'" ?>';
+    ?>
+</form>
+
+<p> <?php
+
+    if(isset($_GET['show_description'])){
+        if(!($_SESSION['show_description'])){
+            $_SESSION['show_description'] = 1;
+        }
+        else{
+            $count = $_SESSION['show_description'] + 1;
+            $_SESSION['show_description'] = $count;
+        }
+    }
+    if($_SESSION['show_description'] % 2 === 0){
+        $showDescription = "<br>";
+    }
+    else {
+        $showDescription = $meal['description'];
+    }
+    echo "<p>$showDescription</p>";
+
+    ?></p>
+
+<!-- Rating -->
+<h1><?php echo $language['ratings']." ".calcMeanStars($ratings); ?>)</h1>
+<form method="get">
+    <label for="search_text"><?php echo $language['filter'];?></label>
+    <?php
+    if(isset($_GET['suchen'])){
+        echo '<input id="search_text" type="text" name="search_text" value= "'.$_GET['search_text'].'">';
+    }
+    else
+    {
+        echo '<input id="search_text" type="text" name="search_text">';
+    }
+    echo '<input type="submit" name="suchen" value="'.$language['search'].'">';
+    ?>
+
+</form>
+<table class="rating">
+    <thead>
+    <tr>
         <?php
-            if (isset($_GET['switch_language'])){
-                if(!($_SESSION['switch_language'])){
-                    $_SESSION['switch_language'] = 1;
-                }
-                else{
-                    $count_language = $_SESSION['switch_language'] + 1;
-                    $_SESSION['switch_language'] = $count_language;
-                }
-            }
-            if(($_SESSION['switch_language'] % 2) === 0) {
-                $language = $_englisch;
-            }
-            else{
-                $language = $_deutsch;
-            }
-            ///Auswahl des Buttons
-            $sprache="DE";
-            if($language==$_deutsch){
-                $sprache="DE";
-            }else{
-                $sprache="EN";
-            }
-            echo '<input type="submit" name="switch_language" value="'.$sprache.'">'
+        echo "<td>".$language['author']."</td>";
+        echo "<td>".$language['text']."</td>";
+        echo "<td>".$language['stars']."</td>";
         ?>
-        <!-- Beschreibung aktivieren / deaktivieren -->
-    </form>
-        <br>
-        <br>
-        <form method= "get">
-            <?php
-                echo '<input type ="submit" name = "show_description" value ="'.$language['btn_desc'].'" ?>';
-            ?>
-        </form>
 
-        <p> <?php
-
-            if(isset($_GET['show_description'])){
-                if(!($_SESSION['show_description'])){
-                    $_SESSION['show_description'] = 1;
-                }
-                else{
-                    $count = $_SESSION['show_description'] + 1;
-                    $_SESSION['show_description'] = $count;
-                }
-            }
-            if($_SESSION['show_description'] % 2 === 0){
-                $showDescription = "<br>";
-            }
-            else {
-                $showDescription = $meal['description'];
-            }
-            echo "<p>$showDescription</p>";
-
-        ?></p>
-
-    <!-- Rating -->
-        <h1><?php echo $language['ratings']." ".calcMeanStars($ratings); ?>)</h1>
-        <form method="get">
-            <label for="search_text"><?php echo $language['filter'];?></label>
-            <?php
-                if(isset($_GET['suchen'])){
-                    echo '<input id="search_text" type="text" name="search_text" value= "'.$_GET['search_text'].'">';
-                }
-                else
-                {
-                    echo '<input id="search_text" type="text" name="search_text">';
-                 }
-                echo '<input type="submit" name="suchen" value="'.$language['search'].'">';
-             ?>
-
-        </form>
-        <table class="rating">
-            <thead>
-            <tr>
-                <?php
-                    echo "<td>".$language['author']."</td>";
-                    echo "<td>".$language['text']."</td>";
-                    echo "<td>".$language['stars']."</td>";
-                ?>
-
-            </tr>
-            </thead>
-            <tbody>
-            <?php
-        foreach ($showRatings as $rating) {
-            echo "<tr>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    foreach ($showRatings as $rating) {
+        echo "<tr>
                       <td class = 'rating_name'> {$rating['author']}</td>
                       <td class= 'rating_text'> {$rating['text']}</td>
                       <td class= 'rating_stars'> {$rating['stars']}</td>
                   </tr>";
-        }
-        ?>
-            </tbody>
-        </table>
+    }
+    ?>
+    </tbody>
+</table>
 
-    <!-- Preise -->
-    <h1><?php echo $language['price']?></h1>
-    <ul>
-        <?php
+<!-- Preise -->
+<h1><?php echo $language['price']?></h1>
+<ul>
+    <?php
 
-        echo $meal['name']."<br>";
-        echo $language['intern'].": ". $language['price'].": ".number_format($meal['price_intern'],2).'€' ."<br>";
-        echo $language['extern'].": ". $language['price'].": ".number_format($meal['price_extern'],2).'€' ."<br>";
+    echo $meal['name']."<br>";
+    echo $language['intern'].": ". $language['price'].": ".number_format($meal['price_intern'],2).'€' ."<br>";
+    echo $language['extern'].": ". $language['price'].": ".number_format($meal['price_extern'],2).'€' ."<br>";
 
-        ?>
-    </ul>
-    <h1><?php echo $language['allergenes']?></h1>
-    <ul>
-        <?php
-        $content = 0;
-        //Ausgabe aller Allergene in einer unsortieren Liste
-        foreach($allergens as $content){
-            echo "<li>".$content."</li>";
-        }
-        ?>
-    </ul>
-    </body>
+    ?>
+</ul>
+<h1><?php echo $language['allergenes']?></h1>
+<ul>
+    <?php
+    $content = 0;
+    //Ausgabe aller Allergene in einer unsortieren Liste
+    foreach($allergens as $content){
+        echo "<li>".$content."</li>";
+    }
+    ?>
+</ul>
+</body>
 
 
 </html>
