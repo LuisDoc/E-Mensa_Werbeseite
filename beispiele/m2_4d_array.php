@@ -21,13 +21,16 @@ $famousMeals= [
 <body>
     <ol>
         <?php
-            foreach($famousMeals as $key => $value){
-                foreach($value as $element=>$val){
-                    echo "<li> ". (string) $val;
-                    foreach($val as $val2 => $val3){
-                        echo " ". $val3. " ";
-                    }
-                    echo "</li>";
+            $years=[
+                   $famousMeals[1]['winner'],
+                   $famousMeals[2]['winner'],
+                   $famousMeals[3]['winner'],
+                   $famousMeals[4]['winner']
+            ];
+
+            foreach($years as $element){
+                foreach($element as $key => $value){
+                    echo "<li>". $value."</li>";
                 }
             }
         ?>
