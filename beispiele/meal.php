@@ -62,30 +62,27 @@ if (!empty($_GET[GET_PARAM_SEARCH_TEXT])) {
     $showRatings = $ratings;
 }
 
-function calcMeanStars(array $ratings) : float {
+function calcMeanStars(array $ratings) {
     //$sum war vorher 1, dadurch ist der Durchschnitt verfälscht
-    $sum = 0;
+    $sum = (float) 0;
     foreach ($ratings as $rating) {
         $sum += $rating['stars'] / count($ratings);
     }
-    return $sum;
+    return (float) $sum;
 }
 
+//Variablen Initialisieren
 $showDescription = "";
-$counter =0;
+$languagetext = "DE";
+$language = $_deutsch;
 
-if(!empty($_GET[GET_PARAM_SHOW_DESCRIPTION])){
-    $counter++;
-
-}
-
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="de">
     <head>
         <meta charset="UTF-8"/>
-        <title>Gericht: <?php echo $meal['name']; ?></title>
+        <title><?php echo $language['meal']." ". $meal['name']; ?></title>
         <style type="text/css">
             * {
                 font-family: Arial, serif;
@@ -96,25 +93,91 @@ if(!empty($_GET[GET_PARAM_SHOW_DESCRIPTION])){
         </style>
     </head>
     <body>
-        <h1>Gericht: <?php echo $meal['name']; ?></h1>
-        <form mehtod= "get">
-            <input type ="submit" id = "show_description" name = "show_description" value ="Click to show Text">
-        </form>
+    <h1><?php echo $language['meal']." ". $meal['name']; ?></h1>
+
+    <!-- Sprache wechseln -->
+    <form method= "get">
         <?php
-            echo "<p>".$counter."</p>";
+            if (isset($_GET['switch_language'])){
+                if(!($_SESSION['switch_language'])){
+                    $_SESSION['switch_language'] = 1;
+                }
+                else{
+                    $count_language = $_SESSION['switch_language'] + 1;
+                    $_SESSION['switch_language'] = $count_language;
+                }
+            }
+            if(($_SESSION['switch_language'] % 2) === 0) {
+                $language = $_englisch;
+            }
+            else{
+                $language = $_deutsch;
+            }
+            ///Auswahl des Buttons
+            $sprache="DE";
+            if($language==$_deutsch){
+                $sprache="DE";
+            }else{
+                $sprache="EN";
+            }
+            echo '<input type="submit" name="switch_language" value="'.$sprache.'">'
         ?>
-        <h1>Bewertungen (Insgesamt: <?php echo calcMeanStars($ratings); ?>)</h1>
+        <!-- Beschreibung aktivieren / deaktivieren -->
+    </form>
+        <br>
+        <br>
+        <form method= "get">
+            <?php
+                echo '<input type ="submit" name = "show_description" value ="'.$language['btn_desc'].'" ?>';
+            ?>
+        </form>
+
+        <p> <?php
+
+            if(isset($_GET['show_description'])){
+                if(!($_SESSION['show_description'])){
+                    $_SESSION['show_description'] = 1;
+                }
+                else{
+                    $count = $_SESSION['show_description'] + 1;
+                    $_SESSION['show_description'] = $count;
+                }
+            }
+            if($_SESSION['show_description'] % 2 === 0){
+                $showDescription = "<br>";
+            }
+            else {
+                $showDescription = $meal['description'];
+            }
+            echo "<p>$showDescription</p>";
+
+        ?></p>
+
+    <!-- Rating -->
+        <h1><?php echo $language['ratings']." ".calcMeanStars($ratings); ?>)</h1>
         <form method="get">
-            <label for="search_text">Filter:</label>
-            <input id="search_text" type="text" name="search_text">
-            <input type="submit" value="Suchen">
+            <label for="search_text"><?php echo $language['filter'];?></label>
+            <?php
+                if(isset($_GET['suchen'])){
+                    echo '<input id="search_text" type="text" name="search_text" value= "'.$_GET['search_text'].'">';
+                }
+                else
+                {
+                    echo '<input id="search_text" type="text" name="search_text">';
+                 }
+                echo '<input type="submit" name="suchen" value="'.$language['search'].'">';
+             ?>
+
         </form>
         <table class="rating">
             <thead>
             <tr>
-                <td>Author</td>
-                <td>Text</td>
-                <td>Sterne</td>
+                <?php
+                    echo "<td>".$language['author']."</td>";
+                    echo "<td>".$language['text']."</td>";
+                    echo "<td>".$language['stars']."</td>";
+                ?>
+
             </tr>
             </thead>
             <tbody>
@@ -130,14 +193,6 @@ if(!empty($_GET[GET_PARAM_SHOW_DESCRIPTION])){
             </tbody>
         </table>
     </body>
-    <h1>Allergene</h1>
-    <ul>
-        <?php
-        $content = 0;
-            //Ausgabe aller Allergene in einer unsortieren Liste
-            foreach($allergens as $content){
-                echo "<li>".$content."</li>";
-            }
-        ?>
-    </ul>
+
+
 </html>
