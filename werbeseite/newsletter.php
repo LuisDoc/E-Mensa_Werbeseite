@@ -20,7 +20,7 @@ if(isset($_POST['Newsletter'])){
 
 
     /* optionale*/
-    require_once "PHPMailer/PHPMailer.php";
+    /*require_once "PHPMailer/PHPMailer.php";
     require_once "PHPMailer/SMTP.php";
     require_once "PHPMailer/Exception.php";
 
@@ -56,7 +56,7 @@ if(isset($_POST['Newsletter'])){
 
     } catch (Exception $e) {
         echo "Failed to deliver Mail";
-    }
+    }*/
 
 }else{
     header("Location:index.php");
