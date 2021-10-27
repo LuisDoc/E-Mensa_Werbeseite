@@ -1,3 +1,6 @@
+<?php
+    require "includes/arrays.inc.php";
+?>
 <!DOCTYPE html>
 <html lang=de dir="ltr">
 <head>
@@ -61,23 +64,9 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>Rindfleisch mit Bambus, Kaiserschoten <br>
-                    und rotem Paprika, dazu Mie Nudeln</td>
-                <td>3,50</td>
-                <td>6,20</td>
-            </tr>
-            <tr>
-                <td>Spinatrisotto mit kleinen Samosateigecken <br>
-                    und gemischter Salat</td>
-                <td>2,90</td>
-                <td>5,30</td>
-            </tr>
-            <tr>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
-            </tr>
+            <?php
+                print_menu();
+            ?>
             </tbody>
         </table>
     </div>
@@ -88,9 +77,9 @@
 
 <img class="dia" src="sources/diagramm.png" alt="diagramm">
 <div class="Emensa">
-    <div class="grid-mensa"> X Besuche</div>
-    <div class="grid-mensa"> Y Anmeldungen zum Newsletter</div>
-    <div class="grid-mensa"> Speisen</div>
+    <?php
+        print_emensa();
+    ?>
 </div>
 
 
@@ -111,9 +100,10 @@
 <section class="wichtig">
     <div>
         <ul class="list">
-            <li>Beste frische saisonale Zutaten</li>
-            <li>Ausgewogene abwechlungsreiche Zutaten</li>
-            <li>Sauberkeit</li>
+            <?php
+                print_important();
+            ?>
+
         </ul>
     </div>
 </section>
