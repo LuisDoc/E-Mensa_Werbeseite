@@ -7,6 +7,7 @@
 const GET_PARAM_MIN_STARS = 'search_min_stars';
 const GET_PARAM_SEARCH_TEXT = 'search_text';
 const GET_PARAM_SHOW_DESCRIPTION = 'show_description';
+const GET_PARAM_SWITCH_LANGUAGE = 'switch_language';
 
 /**
  * List of all allergens.
@@ -139,16 +140,16 @@ session_start();
 <!-- Sprache wechseln -->
 <form method= "get">
     <?php
-    if (isset($_GET['switch_language'])){
-        if(!($_SESSION['switch_language'])){
-            $_SESSION['switch_language'] = 1;
+    if (isset($_GET[GET_PARAM_SWITCH_LANGUAGE])){
+        if(!($_SESSION[GET_PARAM_SWITCH_LANGUAGE])){
+            $_SESSION[GET_PARAM_SWITCH_LANGUAGE] = 1;
         }
         else{
-            $count_language = $_SESSION['switch_language'] + 1;
-            $_SESSION['switch_language'] = $count_language;
+            $count_language = $_SESSION[GET_PARAM_SWITCH_LANGUAGE] + 1;
+            $_SESSION[GET_PARAM_SWITCH_LANGUAGE] = $count_language;
         }
     }
-    if(($_SESSION['switch_language'] % 2) === 0) {
+    if(($_SESSION[GET_PARAM_SWITCH_LANGUAGE] % 2) === 0) {
         $language = $_englisch;
     }
     else{
@@ -161,7 +162,7 @@ session_start();
     }else{
         $sprache="EN";
     }
-    echo '<input type="submit" name="switch_language" value="'.$sprache.'">'
+    echo '<input type="submit" name="'.GET_PARAM_SWITCH_LANGUAGE.'" value="'.$sprache.'">'
     ?>
     <!-- Beschreibung aktivieren / deaktivieren -->
 </form>
@@ -169,22 +170,22 @@ session_start();
 <br>
 <form method= "get">
     <?php
-    echo '<input type ="submit" name = "show_description" value ="'.$language['btn_desc'].'" ?>';
+    echo '<input type ="submit" name = "'.GET_PARAM_SHOW_DESCRIPTION.'" value ="'.$language['btn_desc'].'" ?>';
     ?>
 </form>
 
 <p> <?php
 
-    if(isset($_GET['show_description'])){
-        if(!($_SESSION['show_description'])){
-            $_SESSION['show_description'] = 1;
+    if(isset($_GET[GET_PARAM_SHOW_DESCRIPTION])){
+        if(!($_SESSION[GET_PARAM_SHOW_DESCRIPTION])){
+            $_SESSION[GET_PARAM_SHOW_DESCRIPTION] = 1;
         }
         else{
-            $count = $_SESSION['show_description'] + 1;
-            $_SESSION['show_description'] = $count;
+            $count = $_SESSION[GET_PARAM_SHOW_DESCRIPTION] + 1;
+            $_SESSION[GET_PARAM_SHOW_DESCRIPTION] = $count;
         }
     }
-    if($_SESSION['show_description'] % 2 === 0){
+    if($_SESSION[GET_PARAM_SHOW_DESCRIPTION] % 2 === 0){
         $showDescription = "<br>";
     }
     else {
