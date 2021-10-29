@@ -21,6 +21,8 @@ function InvalidEmail($email){
            }
        }
 
+    }else{
+        return true;
     }
     return false;
 }
