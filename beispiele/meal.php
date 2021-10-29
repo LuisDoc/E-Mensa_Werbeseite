@@ -164,9 +164,11 @@ session_start();
     ///Auswahl des Buttons
     $sprache="DE";
     if($language==$_deutsch){
-        $sprache="DE";
-    }else{
+        //Button zeigt "EN" als alternative Sprache zu "DE"
         $sprache="EN";
+    }else{
+        //Button zeigt "DE" alt alternative Sprache zu "EN"
+        $sprache="DE";
     }
     echo '<input type="submit" name="'.GET_PARAM_SWITCH_LANGUAGE.'" value="'.$sprache.'">'
     ?>
