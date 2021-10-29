@@ -7,7 +7,7 @@
 const GET_PARAM_MIN_STARS = 'search_min_stars';
 const GET_PARAM_SEARCH_TEXT = 'search_text';
 const GET_PARAM_SHOW_DESCRIPTION = 'show_description';
-const GET_PARAM_SWITCH_LANGUAGE = 'switch_language';
+const GET_PARAM_SWITCH_LANGUAGE = 'sprache';
 
 /**
  * List of all allergens.
@@ -122,7 +122,13 @@ session_start();
 <html lang="de">
 <head>
     <meta charset="UTF-8"/>
-    <title><?php echo $language['meal']." ". $meal['name']; ?></title>
+    <?php
+        echo "<title>".$language['meal'].": ".$meal['name']."</title>";
+    ?>
+    <title>
+        <?php
+        echo $language['meal']." ". $meal['name']; ?>
+    </title>
     <style type="text/css">
         * {
             font-family: Arial, serif;
