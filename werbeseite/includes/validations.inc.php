@@ -1,4 +1,9 @@
 <?php
+/**
+ * Praktikum DBWT. Autoren:
+ * Luis, Diniz Do Carmo, 3275829
+ * Nilusche, Liyanaarachchi, 3272466
+ */
 function InvalidUsername($vorname){
     if(!preg_match("/^[a-zA-Z0-9]*$/", $vorname)){
         return true;

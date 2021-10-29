@@ -1,3 +1,8 @@
+<!--
+- Praktikum DBWT. Autoren:
+- Luis, Diniz Do Carmo, 3275829
+- Nilusche, Liyanaarachchi, 3272466
+-->
 <section>
     <!-- Basic Grid -->
     <div class= "header">

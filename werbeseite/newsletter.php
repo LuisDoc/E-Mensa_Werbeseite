@@ -1,4 +1,9 @@
 <?php
+/**
+ * Praktikum DBWT. Autoren:
+ * Luis, Diniz Do Carmo, 3275829
+ * Nilusche, Liyanaarachchi, 3272466
+ */
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;

@@ -1,4 +1,10 @@
+
 <?php
+/**
+ * Praktikum DBWT. Autoren:
+ * Luis, Diniz Do Carmo, 3275829
+ * Nilusche, Liyanaarachchi, 3272466
+ */
     require "includes/arrays.inc.php";
 ?>
 <!DOCTYPE html>

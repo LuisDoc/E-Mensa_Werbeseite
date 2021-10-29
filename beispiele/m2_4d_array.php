@@ -2,7 +2,7 @@
 /**
  * Praktikum DBWT. Autoren:
  * Luis, Diniz Do Carmo, 3275829
- * Niluschen, Liyanaarachchi, 3272466
+ * Nilusche, Liyanaarachchi, 3272466
  */
 
 $famousMeals= [

@@ -2,20 +2,9 @@
 /**
  * Praktikum DBWT. Autoren:
  * Luis, Diniz Do Carmo, 3275829
- * Niluschen, Liyanaarachchi, 3272466
+ * Nilusche, Liyanaarachchi, 3272466
  */
-/*
- * File wird beim schreiben gelöscht
- * Daher vorher das File vorher lesen, dann hinzufügen
- */
-
-//Neue Informationen ins File schreiben
-
 $file = fopen('./accesslog.txt','a');
-
-
-
-
 
 $browser = $_SERVER['HTTP_USER_AGENT'];
 $line = "Datum: ".date('d-m-Y')." Uhrzeit: ".date("H:i")." IP-Adresse: ".$_SERVER['REMOTE_ADDR']." Webbrowser: ".($browser)."\r";
