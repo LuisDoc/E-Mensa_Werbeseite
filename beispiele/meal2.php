@@ -216,12 +216,12 @@ if(isset($_GET['show_desc'])){
      $selectedlanguage=$_SESSION['selectedlanguage'];
        if(!empty($_GET['show_description'])){
          if($_GET['show_description']=="1"){
-           header("Location:meal2.php?show_desc=1&sprache=$selectedlanguage");
+           header("Location:meal2.php?show_desc=1");
          }else{
-           header("Location:meal2.php?show_desc=0&sprache=$selectedlanguage");
+           header("Location:meal2.php?show_desc=0");
          }
        }else{
-         header("Location:meal2.php?show_desc=0&sprache=$selectedlanguage");
+         header("Location:meal2.php?show_desc=0");
        }
      }
     ?>
