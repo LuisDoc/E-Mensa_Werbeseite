@@ -190,6 +190,7 @@ if(isset($_GET['show_desc'])){
 <br>
 <?php
 if(isset($_GET['language'])){
+    //Togglen der Sprache
     if($_SESSION[GET_PARAM_CHANGE_LANGUAGE]=="DE"){
         $_SESSION[GET_PARAM_CHANGE_LANGUAGE]="EN";
     }else{
@@ -210,6 +211,7 @@ if(isset($_GET['language'])){
 </form>
 <?php
 if(isset($_GET['selectDescription'])){
+    //Togglen der Beschreibung
     if($_SESSION[GET_PARAM_SHOW_DESCRIPTION]=="1"){
         $_SESSION[GET_PARAM_SHOW_DESCRIPTION]="0";
     }else{
