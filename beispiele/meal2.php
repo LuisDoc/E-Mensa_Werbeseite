@@ -122,6 +122,13 @@ $language = $_deutsch;
 
 session_start();
 
+//sprache Einstellen nach letzter vorhandener Sitzung
+if($_SESSION['selectedlanguage']=="EN"){
+    $language=$_englisch;
+}else{
+    $language=$_deutsch;
+}
+
 //Sprache Wechseln
 if(isset($_GET['sprache'])){
   if($_GET['sprache']=="EN"){
