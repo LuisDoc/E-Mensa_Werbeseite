@@ -6,8 +6,6 @@
  */
 const GET_PARAM_MIN_STARS = 'search_min_stars';
 const GET_PARAM_SEARCH_TEXT = 'search_text';
-const GET_PARAM_SHOW_DESCRIPTION = 'show_description';
-const GET_PARAM_SWITCH_LANGUAGE = 'sprache';
 
 /**
  * List of all allergens.
@@ -28,7 +26,8 @@ $_deutsch =[
     'intern' => 'intern',
     'extern' => 'extern',
     'yes' => 'ja',
-    'no' => 'nein'
+    'no' => 'nein',
+    'Language' =>'English'
 
 ];
 $_englisch = [
@@ -46,7 +45,8 @@ $_englisch = [
     'intern' => 'intern',
     'extern' => 'extern',
     'yes' => 'yes',
-    'no' => 'no'
+    'no' => 'no',
+    'Language' =>'German'
 ];
 
 $language= $_deutsch;
@@ -123,30 +123,38 @@ $language = $_deutsch;
 session_start();
 
 //sprache Einstellen nach letzter vorhandener Sitzung
-if($_SESSION['selectedlanguage']=="EN"){
+if($_SESSION['selectedlanguage']=="EN" && !isset($_GET['sprache'])){
     $language=$_englisch;
 }else{
     $language=$_deutsch;
 }
+//Beschreibung Anzeigen nach letzter vorhandener Sitzung
+if($_SESSION['selected_description']=="0" && !isset($_GET['show_desc'])){
+    $showDescription ="<br>";
+}else{
+    $showDescription =$meal['description'];
+}
 
 //Sprache Wechseln
 if(isset($_GET['sprache'])){
-  if($_GET['sprache']=="EN"){
-    $language=$_englisch;
-    $_SESSION['selectedlanguage']="EN";
-  }else{
-    $language=$_deutsch;
-    $_SESSION['selectedlanguage']="DE";
-  }
+    if($_GET['sprache']=="EN"){
+        $language=$_englisch;
+        $_SESSION['selectedlanguage']="EN";
+    }else{
+        $language=$_deutsch;
+        $_SESSION['selectedlanguage']="DE";
+    }
 }
 
 //Beschreibung wechseln
 if(isset($_GET['show_desc'])){
-  if($_GET['show_desc']=="0"){
-    $showDescription ="<br>";
-  }else{
-    $showDescription =$meal['description'];
-  }
+    if($_GET['show_desc']=="0"){
+        $showDescription ="<br>";
+        $_SESSION['selected_description']="0";
+    }else{
+        $showDescription =$meal['description'];
+        $_SESSION['selected_description']="1";
+    }
 }
 
 ?>
@@ -155,7 +163,7 @@ if(isset($_GET['show_desc'])){
 <head>
     <meta charset="UTF-8"/>
     <?php
-        echo "<title>".$language['meal'].": ".$meal['name']."</title>";
+    echo "<title>".$language['meal'].": ".$meal['name']."</title>";
     ?>
     <title>
         <?php
@@ -172,65 +180,49 @@ if(isset($_GET['show_desc'])){
 </head>
 <body>
 
-  <!-- Sprache wechseln -->
-  <form  method="get">
-    <select name="langID">
-      <option>Select Language</option>
-      <option value="DE">German</option>
-      <option value="EN">English</option>
-    </select>
-    <button type="submit" name=language>select</button>
-  </form>
-  <br>
-  <br>
-  <?php
-      if(isset($_GET['language'])){
-        if(!empty($_GET['langID'])){
-          if($_GET['langID']=="EN"){
-            header("Location:meal2.php?sprache=EN");
-          }else{
-            header("Location:meal2.php?sprache=DE");
-          }
-        }else{
-          header("Location:meal2.php?sprache=DE");
-        }
-      }
-   ?>
+<!-- Sprache wechseln -->
+<form method="get">
+    <button type="submit" name="language"><?php echo $language['Language']?></button>
+</form>
+<br>
+<?php
+if(isset($_GET['language'])){
+    if($_SESSION['selectedlanguage']=="DE"){
+        $_SESSION['selectedlanguage']="EN";
+    }else{
+        $_SESSION['selectedlanguage']="DE";
+    }
+    $selectedlanguage=$_SESSION['selectedlanguage'];
+
+    header("Location:meal2.php?sprache=$selectedlanguage");
+}
+?>
 <h1>
     <?php echo $language['meal']." ". $meal['name']; ?>
 </h1>
 
-  <!-- Beschreibung aktivieren-->
-<form  method="get">
-  <select name="show_description">
-    <option><?php echo $language['btn_desc']?></option>
-    <option value="1"><?php echo $language['yes']?></option>
-    <option value="0"><?php echo $language['no']?></option>
-  </select>
-  <button type="submit" name=selectDescription>select</button>
+<!-- Beschreibung aktivieren-->
+<form method="get">
+    <button type="submit" name="selectDescription"><?php echo $language['btn_desc']?></button>
 </form>
+<?php
+if(isset($_GET['selectDescription'])){
+    if($_SESSION['selected_description']=="1"){
+        $_SESSION['selected_description']="0";
+    }else{
+        $_SESSION['selected_description']="1";
+    }
+    $selected_description=$_SESSION['selected_description'];
 
+    header("Location:meal2.php?show_desc=$selected_description");
+}
+?>
 
- <?php
-     if(isset($_GET['selectDescription'])){
-     $selectedlanguage=$_SESSION['selectedlanguage'];
-       if(!empty($_GET['show_description'])){
-         if($_GET['show_description']=="1"){
-           header("Location:meal2.php?show_desc=1");
-         }else{
-           header("Location:meal2.php?show_desc=0");
-         }
-       }else{
-         header("Location:meal2.php?show_desc=0");
-       }
-     }
+<p>
+    <?php
+    echo $showDescription;
     ?>
-
-    <p>
-      <?php
-      echo $showDescription;
-       ?>
-    </p>
+</p>
 
 <!-- Rating -->
 <h1><?php echo $language['ratings']." ".calcMeanStars($ratings); ?>)</h1>
