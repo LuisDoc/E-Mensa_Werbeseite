@@ -6,6 +6,8 @@
  */
 const GET_PARAM_MIN_STARS = 'search_min_stars';
 const GET_PARAM_SEARCH_TEXT = 'search_text';
+const GET_PARAM_SHOW_DESCRIPTION ='selected_description';
+const GET_PARAM_CHANGE_LANGUAGE ='selected_language';
 
 /**
  * List of all allergens.
@@ -122,14 +124,15 @@ $language = $_deutsch;
 
 session_start();
 
+
 //sprache Einstellen nach letzter vorhandener Sitzung
-if($_SESSION['selectedlanguage']=="EN" && !isset($_GET['sprache'])){
+if($_SESSION[GET_PARAM_CHANGE_LANGUAGE]=="EN" && !isset($_GET['sprache'])){
     $language=$_englisch;
 }else{
     $language=$_deutsch;
 }
 //Beschreibung Anzeigen nach letzter vorhandener Sitzung
-if($_SESSION['selected_description']=="0" && !isset($_GET['show_desc'])){
+if($_SESSION[GET_PARAM_SHOW_DESCRIPTION]=="0" && !isset($_GET['show_desc'])){
     $showDescription ="<br>";
 }else{
     $showDescription =$meal['description'];
@@ -139,10 +142,10 @@ if($_SESSION['selected_description']=="0" && !isset($_GET['show_desc'])){
 if(isset($_GET['sprache'])){
     if($_GET['sprache']=="EN"){
         $language=$_englisch;
-        $_SESSION['selectedlanguage']="EN";
+        $_SESSION[GET_PARAM_CHANGE_LANGUAGE]="EN";
     }else{
         $language=$_deutsch;
-        $_SESSION['selectedlanguage']="DE";
+        $_SESSION[GET_PARAM_CHANGE_LANGUAGE]="DE";
     }
 }
 
@@ -150,10 +153,10 @@ if(isset($_GET['sprache'])){
 if(isset($_GET['show_desc'])){
     if($_GET['show_desc']=="0"){
         $showDescription ="<br>";
-        $_SESSION['selected_description']="0";
+        $_SESSION[GET_PARAM_SHOW_DESCRIPTION]="0";
     }else{
         $showDescription =$meal['description'];
-        $_SESSION['selected_description']="1";
+        $_SESSION[GET_PARAM_SHOW_DESCRIPTION]="1";
     }
 }
 
@@ -187,12 +190,12 @@ if(isset($_GET['show_desc'])){
 <br>
 <?php
 if(isset($_GET['language'])){
-    if($_SESSION['selectedlanguage']=="DE"){
-        $_SESSION['selectedlanguage']="EN";
+    if($_SESSION[GET_PARAM_CHANGE_LANGUAGE]=="DE"){
+        $_SESSION[GET_PARAM_CHANGE_LANGUAGE]="EN";
     }else{
-        $_SESSION['selectedlanguage']="DE";
+        $_SESSION[GET_PARAM_CHANGE_LANGUAGE]="DE";
     }
-    $selectedlanguage=$_SESSION['selectedlanguage'];
+    $selectedlanguage=$_SESSION[GET_PARAM_CHANGE_LANGUAGE];
 
     header("Location:meal2.php?sprache=$selectedlanguage");
 }
@@ -207,12 +210,12 @@ if(isset($_GET['language'])){
 </form>
 <?php
 if(isset($_GET['selectDescription'])){
-    if($_SESSION['selected_description']=="1"){
-        $_SESSION['selected_description']="0";
+    if($_SESSION[GET_PARAM_SHOW_DESCRIPTION]=="1"){
+        $_SESSION[GET_PARAM_SHOW_DESCRIPTION]="0";
     }else{
-        $_SESSION['selected_description']="1";
+        $_SESSION[GET_PARAM_SHOW_DESCRIPTION]="1";
     }
-    $selected_description=$_SESSION['selected_description'];
+    $selected_description=$_SESSION[GET_PARAM_SHOW_DESCRIPTION];
 
     header("Location:meal2.php?show_desc=$selected_description");
 }
