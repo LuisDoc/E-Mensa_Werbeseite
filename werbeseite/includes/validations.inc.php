@@ -5,6 +5,8 @@
  * Nilusche, Liyanaarachchi, 3272466
  */
 function InvalidUsername($vorname){
+    if(empty($vorname))
+        return true;
     if(!preg_match("/^[a-zA-Z0-9]*$/", $vorname)){
         return true;
     }
@@ -12,6 +14,8 @@ function InvalidUsername($vorname){
 }
 
 function InvalidEmail($email){
+    if(empty($email))
+        return true;
     $blacklist= [
         'rcpt.at',
         'damnthespam.at',
