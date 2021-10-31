@@ -13,21 +13,23 @@ function InvalidUsername($vorname){
 
 function InvalidEmail($email){
     $blacklist= [
-        'rcpt',
-        'damnthespam',
-        'wegwerfmail',
-        'trashmail',
+        'rcpt.at',
+        'damnthespam.at',
+        'wegwerfmail.de',
+        'trashmail.de',
+        'trashmail.com'
     ];
 
     if(filter_var($email, FILTER_VALIDATE_EMAIL)){
-       foreach($blacklist as $element){
-           if(str_contains($email,$element)){
-               return true;
-           }
-       }
+        $parts =explode('@', $email);
+        $domain = array_pop($parts);
+
+        if(in_array($domain, $blacklist)){
+            return true;
+        }
+        return false;
 
     }else{
         return true;
     }
-    return false;
 }
