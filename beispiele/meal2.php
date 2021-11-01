@@ -132,7 +132,7 @@ if($_SESSION[GET_PARAM_CHANGE_LANGUAGE]=="EN" && !isset($_GET['sprache'])){
     $language=$_deutsch;
 }
 //Beschreibung Anzeigen nach letzter vorhandener Sitzung
-if($_SESSION[GET_PARAM_SHOW_DESCRIPTION]=="0" && !isset($_GET['show_desc'])){
+if($_SESSION[GET_PARAM_SHOW_DESCRIPTION]=="0" && !isset($_GET['show_description'])){
     $showDescription ="<br>";
 }else{
     $showDescription =$meal['description'];
@@ -150,8 +150,8 @@ if(isset($_GET['sprache'])){
 }
 
 //Beschreibung wechseln
-if(isset($_GET['show_desc'])){
-    if($_GET['show_desc']=="0"){
+if(isset($_GET['show_description'])){
+    if($_GET['show_description']=="0"){
         $showDescription ="<br>";
         $_SESSION[GET_PARAM_SHOW_DESCRIPTION]="0";
     }else{
@@ -219,7 +219,7 @@ if(isset($_GET['selectDescription'])){
     }
     $selected_description=$_SESSION[GET_PARAM_SHOW_DESCRIPTION];
 
-    header("Location:meal2.php?show_desc=$selected_description");
+    header("Location:meal2.php?show_description=$selected_description");
 }
 ?>
 
