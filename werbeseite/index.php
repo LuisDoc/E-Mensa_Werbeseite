@@ -24,7 +24,6 @@
     include ("includes/header.inc.php");
 ?>
 
-
 <!-- Section für das Image -->
 <section>
     <div class = "title_picture">
@@ -32,7 +31,6 @@
              alt="">
     </div>
 </section>
-
 
 <!-- Section für Ankündigungen -->
 <section>
@@ -52,7 +50,6 @@
         </div>
     </div>
 </section>
-
 
 <!-- Section für Speisen -->
 <section>
@@ -76,11 +73,12 @@
             </tbody>
         </table>
     </div>
+    <br>
+    <br>
 </section>
-<br>
-<br>
 <h3><a class ="Emensa_heading" name ="Zahlen">E-Mensa in Zahlen</a></h3>
 
+<!-- E-Mensa in Zahlen -->
 <img class="dia" src="sources/diagramm.png" alt="diagramm">
 <div class="Emensa">
     <?php
@@ -88,7 +86,7 @@
     ?>
 </div>
 
-
+<!-- Formular Newsletteranmeldung -->
 <div class="Formular" id="Newsletter">
     <h3 class="formtitle"><a name ="Newsletter">Interesse geweckt?  Wir informieren sie!</a></h3>
     <form class="formParagraph" action="newsletter.php" method="post">
@@ -114,9 +112,10 @@
             echo '<p class="successmessage"> Anmeldung für den Newsletter erfolgreich<br></p>';
         }
     }
-
     ?>
 </div>
+
+<!-- Das ist uns wichtig -->
 <h3><a name = "Wichtig">Das ist uns wichtig</a></h3>
 <section class="wichtig">
     <div>
@@ -130,6 +129,7 @@
 </section>
 <h1>Wir freuen uns auf ihren Besuch!</h1>
 
+<!-- Footer -->
 <?php
     include("includes/footer.inc.php");
 ?>

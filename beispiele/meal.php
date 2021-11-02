@@ -84,7 +84,6 @@ $showRatings = [];
 if (!empty($_GET[GET_PARAM_SEARCH_TEXT])) {
     //Mit strtolower wird der Suchterm in kleinbuchstaben umgewandelt
     $searchTerm = strtolower($_GET[GET_PARAM_SEARCH_TEXT]);
-
     foreach ($ratings as $rating) {
         $rating_to_lower = strtolower($rating['text']);
         if (strpos($rating_to_lower, $searchTerm) !== false) {

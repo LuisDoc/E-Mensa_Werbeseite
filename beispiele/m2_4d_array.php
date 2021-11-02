@@ -15,13 +15,15 @@ $famousMeals= [
 /*
  * Aufgabenteil b
  */
-
 function calculateMissingYears($famousMeals){
+
     //Aktuelles jahr
     $recent_year = date("Y");
+    //Array mit Ergebnissen
     $result=[];
-
+    //Startjahr ist 2000
     $year = 2000;
+
     while($year <= $recent_year){
         $gefunden = false;
         foreach ($famousMeals as $meal){
@@ -42,8 +44,6 @@ function calculateMissingYears($famousMeals){
             array_push($result, $year);
         }
         $year++;
-
-
     }
     return $result;
 
