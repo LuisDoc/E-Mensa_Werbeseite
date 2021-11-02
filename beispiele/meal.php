@@ -138,9 +138,7 @@ session_start();
     </style>
 </head>
 <body>
-<h1>
-    <?php echo $language['meal']." ". $meal['name']; ?>
-</h1>
+
 
 <!-- Sprache wechseln -->
 <form method= "get">
@@ -175,13 +173,16 @@ session_start();
 </form>
 <br>
 <br>
+<h1>
+    <?php echo $language['meal']." ". $meal['name']; ?>
+</h1>
 <form method= "get">
     <?php
     echo '<input type ="submit" name = "'.GET_PARAM_SHOW_DESCRIPTION.'" value ="'.$language['btn_desc'].'" ?>';
     ?>
 </form>
 
-<p> <?php
+ <?php
 
     if(isset($_GET[GET_PARAM_SHOW_DESCRIPTION])){
         if(!($_SESSION[GET_PARAM_SHOW_DESCRIPTION])){
@@ -200,7 +201,7 @@ session_start();
     }
     echo "<p>$showDescription</p>";
 
-    ?></p>
+    ?>
 
 <!-- Rating -->
 <h1><?php echo $language['ratings']." ".calcMeanStars($ratings); ?>)</h1>
