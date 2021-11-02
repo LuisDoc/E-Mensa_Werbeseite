@@ -64,6 +64,7 @@
                 <th>&nbsp;</th>
                 <th>Preise intern</th>
                 <th>Preise extern</th>
+                <th>Bilder</th>
             </tr>
             </thead>
             <tbody>
