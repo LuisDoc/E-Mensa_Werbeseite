@@ -118,10 +118,10 @@ $language = $_deutsch;
 session_start();
 if(isset($_SESSION[GET_PARAM_SWITCH_LANGUAGE])){
     if(($_SESSION[GET_PARAM_SWITCH_LANGUAGE] % 2) === 0) {
-        $language = $_deutsch;
+        $language = $_englisch;
     }
     else{
-        $language = $_englisch;
+        $language = $_deutsch;
     }
 }
 ?>

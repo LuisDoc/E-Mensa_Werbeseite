@@ -7,10 +7,12 @@
 require_once "m2_4a_standardparameter.php";
 
 $result = 0;
-if(isset($_GET['abschicken'])){
+if(isset($_GET['addieren'])){
     $result = add($_GET['number_a'],$_GET['number_b']);
 }
-
+if(isset($_GET['multiplizieren'])){
+    $result = mult($_GET['number_a'],$_GET['number_b']);
+}
 
 ?>
 <!DOCTYPE html>
@@ -31,7 +33,8 @@ if(isset($_GET['abschicken'])){
         <form method = "get">
             <input type = "text" name ="number_a" placeholder ="Erste Nummer" required>
             <input type ="text" name ="number_b" placeholder = "Zweite Nummer" required>
-            <input type = "submit" name = "abschicken" value = "Berechnung starten">
+            <input type = "submit" name = "addieren" value = "Addieren">
+            <input type = "submit" name = "multiplizieren" value="Multiplizieren">
         </form>
         <p> Ergebnis: <?php echo $result ?> </p>
     </body>
