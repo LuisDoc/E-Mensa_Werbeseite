@@ -131,7 +131,13 @@ if(isset($_SESSION[GET_PARAM_SWITCH_LANGUAGE])){
     <meta charset="UTF-8"/>
     <title>
         <?php
-        echo $language['meal']." ". $meal['name']; ?>
+        if($language == $_englisch){
+            echo $_deutsch['meal'].": ". $meal['name'];
+        }
+        else{
+            echo $_englisch['meal'].": ". $meal['name'];
+        }
+        ?>
     </title>
     <style type="text/css">
         * {
@@ -188,7 +194,6 @@ if(isset($_SESSION[GET_PARAM_SWITCH_LANGUAGE])){
 </form>
 
  <?php
-
     if(isset($_GET[GET_PARAM_SHOW_DESCRIPTION])){
         if(!($_SESSION[GET_PARAM_SHOW_DESCRIPTION])){
             $_SESSION[GET_PARAM_SHOW_DESCRIPTION] = 1;
@@ -205,7 +210,6 @@ if(isset($_SESSION[GET_PARAM_SWITCH_LANGUAGE])){
         $showDescription = $meal['description'];
     }
     echo "<p>$showDescription</p>";
-
     ?>
 
 <!-- Rating -->
