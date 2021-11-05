@@ -10,7 +10,7 @@ use PHPMailer\PHPMailer\Exception;
 if(isset($_POST['Newsletter'])){
     $vorname = $_POST['Vorname'];
     $email = $_POST['email'];
-
+    $language =$_POST['language'];
     require_once "includes/validations.inc.php";
 
     if(InvalidUsername($vorname)!==false){
@@ -23,7 +23,10 @@ if(isset($_POST['Newsletter'])){
     }
 
 
-
+    $file = fopen('persons.csv', 'a');
+    $person = array($vorname, $email, $language);
+    fputcsv($file, $person);
+    fclose($file);
     /* optionale*/
     /*require_once "PHPMailer/PHPMailer.php";
     require_once "PHPMailer/SMTP.php";
