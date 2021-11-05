@@ -76,25 +76,21 @@ function calculateMissingYears($famousMeals){
         <?php
          echo "<ul class = aeußere_liste>";
             foreach ($famousMeals as $meal){
-                echo "<li>";
-                //Gericht wird zu der aeußeren Liste hinzugefuegt
-                echo $meal['name'];
-                //Innere sortierte Liste
-                echo "<ol class = innere_liste>";
+
+                echo "<li>{$meal['name']} <ol class = innere_liste>";
                 //Wenn mehr als ein Jahr eingetragen ist
                 if(is_array($meal['winner'])){
                     //Array sortieren nach value
                     arsort($meal['winner']);
-
+                    //Ermittle das wie vielte Objekt gerade ausgegeben wird
                     $counter = 0;
+                    //Ermittle Menge an Jahren
+                    $amount = count($meal['winner']);
                     foreach($meal['winner'] as $year){
-                        echo "<li class = listenelement_innen>";
-                        echo (int)$year;
-                        //Mit Amount und Counter wird das Komma ermöglicht,
-                        //ohne dass das letzte Element auch ein Komma bekommt
-                        $amount = count($meal['winner']);
+                        echo "<li class = listenelement_innen>{$year}";
+                        //Ein weiteres Jahr wurde ausgegeben -> inkrementieren
                         $counter++;
-
+                        //Wenn noch nicht alle Jahre ausgegeben wurde, Kommata setzen
                         if ($amount !== $counter)
                             echo ", ";
                         echo "</li>";
@@ -104,10 +100,8 @@ function calculateMissingYears($famousMeals){
                 else{
                     echo "<li class = listenelement_innen>".$meal['winner']."</li>";
                 }
-                //Beenden der Sorted List
-                echo "</ol>";
-                //Element der normalen Liste ist vorbei
-                echo "</li>";
+                //Beenden des Listen Elements: Sortierte Liste
+                echo "</ol></li>";
             }
             echo  "</ul>";
         ?>
