@@ -76,7 +76,6 @@ function calculateMissingYears($famousMeals){
         <?php
          echo "<ul class = aeußere_liste>";
             foreach ($famousMeals as $meal){
-
                 echo "<li>{$meal['name']} <ol class = innere_liste>";
                 //Wenn mehr als ein Jahr eingetragen ist
                 if(is_array($meal['winner'])){
