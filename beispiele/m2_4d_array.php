@@ -55,16 +55,16 @@ function calculateMissingYears($famousMeals){
     <meta charset="UTF-8"/>
     <title>Famous Meals</title>
     <style>
-        .aeußere_liste{
-            list-style-type: decimal;
-        }
         .innere_liste{
             list-style-type: none;
-            margin-left: -40px;
+            margin-left : -40px;
         }
         .listenelement_innen{
             display: inline;
             margin-right: 10px;
+        }
+        .missing_years{
+            list-style-type: none;
         }
     </style>
 </head>
@@ -74,7 +74,7 @@ function calculateMissingYears($famousMeals){
 </h1>
     <ol>
         <?php
-         echo "<ul class = aeußere_liste>";
+         echo "<ol>";
             foreach ($famousMeals as $meal){
 
                 echo "<li>{$meal['name']} <ol class = innere_liste>";
@@ -103,12 +103,12 @@ function calculateMissingYears($famousMeals){
                 //Beenden des Listen Elements: Sortierte Liste
                 echo "</ol></li>";
             }
-            echo  "</ul>";
+            echo  "</ol>";
         ?>
     </ol>
 <h1> Aufgabenteil b)</h1>
     <?php
-        echo "<ol class = innere_liste>";
+        echo "<ol class = missing_years>";
         foreach  (calculateMissingYears($famousMeals) as $year){
             echo "<li>".$year."</li>";
         }
