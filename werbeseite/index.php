@@ -91,8 +91,21 @@
 <div class="Formular" id="Newsletter">
     <h3 class="formtitle"><a name ="Newsletter">Interesse geweckt?  Wir informieren sie!</a></h3>
     <form class="formParagraph" action="newsletter.php" method="post">
-        <input class="input" type="text" name="Vorname" value="" placeholder="Vorname" required>
-        <input class="input" type="text" name="email" value="" placeholder="Email" required>
+        <?php
+        if(isset($_GET['username'])){
+            $vorname = $_GET['username'];
+            echo '<input class="input" type="text" name="Vorname" value="'.$vorname.'"> ';
+        }else{
+            echo '<input class="input" type="text" name="Vorname" value="" placeholder="Vorname" required>';
+        }
+        if(isset($_GET['mail'])){
+            $mail = $_GET['mail'];
+            echo '<input class="input" type="text" name="email" value="'.$mail.'">';
+        }else{
+            echo '<input class="input" type="text" name="email" value="" placeholder="Email" required>';
+        }
+        ?>
+
         <select class="sel" name="language">
             <option value="Deutsch">Deutsch</option>
             <option value="Englisch">Englisch</option>
