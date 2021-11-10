@@ -60,6 +60,7 @@
       <extension name="mosquitto-php" enabled="false" />
       <extension name="mqseries" enabled="false" />
       <extension name="mssql" enabled="false" />
+      <extension name="mysql" enabled="false" />
       <extension name="mysql_xdevapi" enabled="false" />
       <extension name="ncurses" enabled="false" />
       <extension name="newrelic" enabled="false" />

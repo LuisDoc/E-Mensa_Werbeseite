@@ -65,15 +65,16 @@
         <table id="menu">
             <thead>
             <tr>
-                <th>&nbsp;</th>
+                <th>&nbsp;Name</th>
                 <th>Preise intern</th>
                 <th>Preise extern</th>
+                <th>Allergene</th>
                 <th>Bilder</th>
             </tr>
             </thead>
             <tbody>
             <?php
-                print_menu();
+                print_menu_with_database();
             ?>
             </tbody>
         </table>

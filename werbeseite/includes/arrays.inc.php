@@ -5,7 +5,6 @@
  * Nilusche, Liyanaarachchi, 3272466
  */
 
-
 function print_important(){
     $wichtig= [
         "Beste frische saisonale Zutaten",
@@ -46,6 +45,12 @@ function print_emensa(){
     }
     echo '<div class="grid-mensa">'.$_SESSION['visitCounter'].' Besuche</div>';
     echo '<div class="grid-mensa">'.$_SESSION['newsletterCounter'].' Anmeldungen zum Newsletter</div>';
-    echo '<div class="grid-mensa">'.$_SESSION['menuCounter'].' Speisen</div>';
-}
 
+    //SQL Abfrage Menu Counter
+
+
+    echo '<div class="grid-mensa">'.$_SESSION['menuCounter'].' Speisen</div>';
+
+    //Vorher Menu Counter über Session
+    //echo '<div class="grid-mensa">'.$_SESSION['menuCounter'].' Speisen</div>';
+}
