@@ -35,7 +35,69 @@ function print_menu(){
         echo "</tr>";
     }
 }
+function print_menu_with_database(){
+    $link = mysqli_connect(
+        "localhost",
+        "root",
+        "",
+        "emensawerbeseite",
+        3306
+    );
 
+    if (!$link){
+        echo "Verbindung zur Datenbank fehlgeschlagen: ",mysqli_connect_error();
+        exit();
+    }
+    //fehler ausgabe
+    $error = mysqli_error($link);
+    echo $error;
+
+    $sql = "select name ,preis_intern, preis_extern
+            from gericht
+            order by name asc
+            ";
+
+    $result = mysqli_query($link, $sql);
+
+    if (!$result) {
+        echo "Fehler während der Abfrage: ", mysqli_error($link);
+        exit();
+    }
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $sql2 = "select gha.code 
+                from gericht g
+                left join gericht_hat_allergen gha 
+                on g.id = gha.gericht_id
+                where g.name = '{$row['name']}'";
+
+        $allergene = mysqli_query($link, $sql2);
+
+        echo "<tr>
+                <td>{$row['name']}</td>
+                <td>{$row['preis_intern']}</td>
+                <td>{$row['preis_extern']}</td>
+                <td>";
+        //Wenn Allergene vorhanden sind wurden sie über eine zweite Query ermittelt
+        //Und werden jetzt ausgegeben
+        if ($allergene) {
+            $counter = 0;
+            while($a = mysqli_fetch_assoc($allergene)) {
+                if ($counter != 0){
+                    echo ", ";
+                }
+                echo $a['code'];
+                $counter++;
+            }
+        }
+        echo "</td>
+                <td>Noch kein Bild vorhanden</td>
+            </tr>";
+    }
+    mysqli_free_result($allergene);
+    mysqli_free_result($result);
+    mysqli_close($link);
+    }
 function print_emensa(){
     $statistik= ["Y Anmeldungen zum Newsletter"];
     if(isset($_SESSION['visitCounter'])){
