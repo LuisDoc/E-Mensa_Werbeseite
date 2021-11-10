@@ -19,11 +19,12 @@ function print_menu(){
     $menu = [
         1 => ["Rindfleisch mit Bambus,<br> Kaiserschoten und rotem Paprika, dazu Mie Nudeln", 3.50, 6.20,'<img class="speiseplanimage"src="image/Rindfleisch_mit_Paprika_und_Bambus.jpg" alt="Rindfleisch">'],
         2 => ["Spinatrisotto mit kleinen Samosateigecken <br> und gemischter Salat", 2.90,5.30, '<img class="speiseplanimage"src="image/Spinatrisotto_mit_kleinen_Samosateigecken.jpg" alt="Spinatrisotto">'] ,
-        4 => ["Nudeln mit Reis und Salz<br>",4.99, 8.60,'<img class="speiseplanimage"src="image/Reis_mit_Nudeln.jpg" alt="Reis">'],
-        5 => ["Portion Mayonnaise mit Mayonnaise", 3.50, 6.50, '<img class="speiseplanimage"src="image/Mayonnaise.jpg" alt="Mayonnaise">'],
-        6 => ["Dönerpizza", 4.50, 7.50, '<img class="speiseplanimage"src="image/Dönerpizza.png" alt="Dönerpizza">'],
-        7 => ["...", "...","..."]
+        3 => ["Nudeln mit Reis und Salz<br>",4.99, 8.60,'<img class="speiseplanimage"src="image/Reis_mit_Nudeln.jpg" alt="Reis">'],
+        4 => ["Portion Mayonnaise mit Mayonnaise", 3.50, 6.50, '<img class="speiseplanimage"src="image/Mayonnaise.jpg" alt="Mayonnaise">'],
+        5 => ["Dönerpizza", 4.50, 7.50, '<img class="speiseplanimage"src="image/Dönerpizza.png" alt="Dönerpizza">'],
+        6 => ["...", "...","..."]
     ];
+    $_SESSION['menuCounter'] = sizeof($menu)-1;
 
     foreach($menu as $key=> $value){
         echo "<tr>";
@@ -35,8 +36,14 @@ function print_menu(){
 }
 
 function print_emensa(){
-    $statistik= ["X Besuche","Y Anmeldungen zum Newsletter","Speisen"];
-    foreach($statistik as $element){
-        echo '<div class="grid-mensa">' . $element ."</div>";
+    $statistik= ["Y Anmeldungen zum Newsletter"];
+    if(isset($_SESSION['visitCounter'])){
+        $_SESSION['visitCounter']++;
+    }else{
+        $_SESSION['visitCounter']=0;
     }
+    echo '<div class="grid-mensa">'.$_SESSION['visitCounter'].' Besuche</div>';
+    echo '<div class="grid-mensa">'.$_SESSION['newsletterCounter'].' Anmeldungen zum Newsletter</div>';
+    echo '<div class="grid-mensa">'.$_SESSION['menuCounter'].' Speisen</div>';
 }
+

@@ -7,6 +7,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+
+session_start();
+
 if(isset($_POST['Newsletter'])){
     $vorname = $_POST['Vorname'];
     $email = $_POST['email'];
