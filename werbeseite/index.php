@@ -65,7 +65,7 @@
         <table id="menu">
             <thead>
             <tr>
-                <th>&nbsp;Name</th>
+                <th>&nbsp;</th>
                 <th>Preise intern</th>
                 <th>Preise extern</th>
                 <th>Allergene</th>
@@ -74,8 +74,23 @@
             </thead>
             <tbody>
             <?php
-                print_menu_with_database();
+                $usedAllergen = print_menu_with_database();
             ?>
+            </tbody>
+        </table>
+    </div>
+    <div class ="speisen_allergene">
+        <table id="allergene">
+            <thead>
+            <tr>
+                <th>Code</th>
+                <th>Allergene</th>
+            </tr>
+            </thead>
+            <tbody>
+                <?php
+                printAllergen($usedAllergen);
+                ?>
             </tbody>
         </table>
     </div>

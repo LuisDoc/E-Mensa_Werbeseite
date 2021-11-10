@@ -149,6 +149,39 @@ a.header_links:hover{
 
 }
 
+/*
+    Allergene
+ */
+.speisen_allergene{
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 1em;
+    font-size: 12px;
+}
+#allergene{
+    border-collapse: collapse;
+    border:1px solid rgba(46, 75, 78, 0.8);
+}
+#allergene td, #allergene th{
+    padding-left:1em;
+    padding-right:2em;
+
+}
+#allergene tr{
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+    border:1px solid rgba(46, 75, 78, 0.8);
+}
+#allergene tr:hover{
+    background-color: #ddd;
+}
+#allergene th{
+    background-color:#6cb3b9;
+    color:white;
+}
+
+
 
 /*
     Mensa in Zahlen

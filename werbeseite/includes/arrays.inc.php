@@ -4,7 +4,9 @@
  * Luis, Diniz Do Carmo, 3275829
  * Nilusche, Liyanaarachchi, 3272466
  */
-
+/*
+ * Was uns wichtig ist
+ */
 function print_important(){
     $wichtig= [
         "Beste frische saisonale Zutaten",
@@ -15,6 +17,9 @@ function print_important(){
         echo "<li>". $element ."</li>";
     }
 }
+/*
+ * Menu als Table
+ */
 function print_menu(){
 
     $menu = [
@@ -35,6 +40,9 @@ function print_menu(){
         echo "</tr>";
     }
 }
+/*
+ * Menu
+ */
 function print_menu_with_database(){
     $link = mysqli_connect(
         "localhost",
@@ -52,10 +60,15 @@ function print_menu_with_database(){
     $error = mysqli_error($link);
     echo $error;
 
+    /*
+     * Ausdruck des Menus
+     */
+
+    //Kontrolle ob ein Limit per Variable gegeben ist oder nicht
     $sql = "select name ,preis_intern, preis_extern
             from gericht
             order by name asc
-            ";
+            limit 5";
 
     $result = mysqli_query($link, $sql);
 
@@ -63,6 +76,9 @@ function print_menu_with_database(){
         echo "Fehler während der Abfrage: ", mysqli_error($link);
         exit();
     }
+
+    //Benutze Allergene werden in Array abgespeichert
+    $usedAllergen = [];
 
     while ($row = mysqli_fetch_assoc($result)) {
         $sql2 = "select gha.code 
@@ -83,6 +99,9 @@ function print_menu_with_database(){
         if ($allergene) {
             $counter = 0;
             while($a = mysqli_fetch_assoc($allergene)) {
+                if(!in_array($a,$usedAllergen)){
+                    array_push($usedAllergen,$a);
+                }
                 if ($counter != 0){
                     echo ", ";
                 }
@@ -97,7 +116,37 @@ function print_menu_with_database(){
     mysqli_free_result($allergene);
     mysqli_free_result($result);
     mysqli_close($link);
+
+    return $usedAllergen;
     }
+
+function printAllergen($usedAllergen)
+{
+    $link = mysqli_connect(
+        "localhost",
+        "root",
+        "",
+        "emensawerbeseite"
+    );
+    sort($usedAllergen);
+    foreach ($usedAllergen as $allergen) {
+
+        $sql = "select name, code
+                from allergen
+                where code = '{$allergen['code']}'";
+
+        $getName = mysqli_query($link,$sql);
+
+        echo "<tr>";
+
+        while($row = mysqli_fetch_assoc($getName)){
+            echo "<td>{$row['code']}</td>";
+            echo "<td>{$row['name']}</td>";
+        }
+
+        echo "</tr>";
+    }
+}
 function print_emensa(){
     $statistik= ["Y Anmeldungen zum Newsletter"];
     if(isset($_SESSION['visitCounter'])){
@@ -108,10 +157,23 @@ function print_emensa(){
     echo '<div class="grid-mensa">'.$_SESSION['visitCounter'].' Besuche</div>';
     echo '<div class="grid-mensa">'.$_SESSION['newsletterCounter'].' Anmeldungen zum Newsletter</div>';
 
-    //SQL Abfrage Menu Counter
+    //Zählung der Gerichte mittels SQL Abfrage
+    $link = mysqli_connect(
+        "localhost",
+        "root",
+        "",
+        "emensawerbeseite"
+    );
 
+    $sql3 = "select count(*) from gericht";
+    $menuCounter = mysqli_query($link, $sql3);
 
-    echo '<div class="grid-mensa">'.$_SESSION['menuCounter'].' Speisen</div>';
+    $nummer = mysqli_fetch_row($menuCounter);
+
+    echo '<div class="grid-mensa">'.$nummer[0].' Speisen</div>';
+    mysqli_free_result($menuCounter);
+    mysqli_close($link);
+
 
     //Vorher Menu Counter über Session
     //echo '<div class="grid-mensa">'.$_SESSION['menuCounter'].' Speisen</div>';
