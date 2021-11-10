@@ -30,6 +30,12 @@ if(isset($_POST['Newsletter'])){
     $person = array($vorname, $email, $language);
     fputcsv($file, $person);
     fclose($file);
+    if(!isset($_SESSION['newsletterCounter'])){
+        $_SESSION['newsletterCounter'] =1;
+    }
+    else{
+        $_SESSION['newsletterCounter']++;
+    }
     /* optionale*/
     /*require_once "PHPMailer/PHPMailer.php";
     require_once "PHPMailer/SMTP.php";

@@ -6,6 +6,10 @@
  * Nilusche, Liyanaarachchi, 3272466
  */
     require "includes/arrays.inc.php";
+    session_start();
+    /*
+     *
+     */
 ?>
 <!DOCTYPE html>
 <html lang=de dir="ltr">
@@ -124,6 +128,7 @@
         }
         if($_GET['error']=="success"){
             echo '<p class="successmessage"> Anmeldung für den Newsletter erfolgreich<br></p>';
+
         }
     }
 
