@@ -1,5 +1,5 @@
 
-USE emensawerbseite;
+USE emensawerbeseite;
 
 INSERT INTO `allergen` (`code`, `name`, `typ`) VALUES
 	('a', 'Getreideprodukte', 'Getreide (Gluten)'),
