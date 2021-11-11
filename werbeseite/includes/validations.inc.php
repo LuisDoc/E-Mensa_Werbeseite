@@ -7,7 +7,7 @@
 function InvalidUsername($vorname){
     if(empty($vorname))
         return true;
-    if(!preg_match("/^[a-zA-Z0-9]*$/", $vorname)){
+    if(!preg_match("/^[a-zA-Z]*$/", $vorname)){
         return true;
     }
     return false;

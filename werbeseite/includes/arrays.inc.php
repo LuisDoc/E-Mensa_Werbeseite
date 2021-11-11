@@ -41,7 +41,7 @@ function print_menu_with_database(){
         "root",
         "",
         "emensawerbeseite",
-        3306
+        3307
     );
 
     if (!$link){

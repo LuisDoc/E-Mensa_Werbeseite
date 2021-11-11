@@ -17,11 +17,13 @@ if(isset($_POST['Newsletter'])){
     require_once "includes/validations.inc.php";
 
     if(InvalidUsername($vorname)!==false){
-        header("Location: index.php?error=invalidUsername&mail=$email#Newsletter");
+        header("Location: index.php?error=invalidUsername#Newsletter");
+        $_SESSION['email'] = $email;
         exit();
     }
     if(InvalidEmail($email)!==false){
-        header("Location: index.php?error=invalidEmail&username=$vorname#Newsletter");
+        header("Location: index.php?error=invalidEmail#Newsletter");
+        $_SESSION['vorname'] = $vorname;
         exit();
     }
 

@@ -17,7 +17,7 @@ $link = mysqli_connect(
     "root",
     "",
     "emensawerbeseite",
-    3306
+    3307
 );
 
 if (!$link){
