@@ -68,13 +68,14 @@
                 <th>&nbsp;</th>
                 <th>Preise intern</th>
                 <th>Preise extern</th>
-                <th>Allergene</th>
                 <th>Bilder</th>
+                <th>Allergene</th>
             </tr>
             </thead>
             <tbody>
             <?php
-                $usedAllergen = print_menu_with_database();
+            print_menu();
+            $usedAllergen = print_menu_with_database();
             ?>
             </tbody>
         </table>

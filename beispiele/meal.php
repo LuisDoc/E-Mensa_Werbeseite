@@ -79,6 +79,8 @@ $ratings = [
         'author' => 'Marta M.',
         'stars' => 3 ]
 ];
+
+//Suchen von Ratings
 $showRatings = [];
 //vorher if (!empty($_GET[GET_PARAM_SEARCH_TEXT]) {
 if (!empty($_GET[GET_PARAM_SEARCH_TEXT])) {
@@ -212,7 +214,7 @@ if(isset($_SESSION[GET_PARAM_SWITCH_LANGUAGE])){
     echo "<p>$showDescription</p>";
     ?>
 
-<!-- Rating -->
+<!-- Suchen -->
 <h1><?php echo $language['ratings']." ".calcMeanStars($ratings); ?>)</h1>
 <form method="get">
     <label for="search_text"><?php echo $language['filter'];?></label>

@@ -48,8 +48,7 @@ function print_menu_with_database(){
         "localhost",
         "root",
         "",
-        "emensawerbeseite",
-        3307
+        "emensawerbeseite"
     );
 
     if (!$link){
@@ -93,6 +92,7 @@ function print_menu_with_database(){
                 <td>{$row['name']}</td>
                 <td>{$row['preis_intern']}</td>
                 <td>{$row['preis_extern']}</td>
+                <td>Noch kein Bild vorhanden</td>
                 <td>";
         //Wenn Allergene vorhanden sind wurden sie über eine zweite Query ermittelt
         //Und werden jetzt ausgegeben
@@ -110,7 +110,7 @@ function print_menu_with_database(){
             }
         }
         echo "</td>
-                <td>Noch kein Bild vorhanden</td>
+                
             </tr>";
     }
     mysqli_free_result($allergene);
@@ -154,8 +154,15 @@ function print_emensa(){
     }else{
         $_SESSION['visitCounter']=0;
     }
+
     echo '<div class="grid-mensa">'.$_SESSION['visitCounter'].' Besuche</div>';
-    echo '<div class="grid-mensa">'.$_SESSION['newsletterCounter'].' Anmeldungen zum Newsletter</div>';
+    if(isset($_SESSION['newsletterCounter'])){
+        echo '<div class="grid-mensa">'.$_SESSION['newsletterCounter'].' Anmeldungen zum Newsletter</div>';
+    }
+    else{
+        echo '<div class="grid-mensa"> 0 Anmeldungen zum Newsletter</div>';
+    }
+
 
     //Zählung der Gerichte mittels SQL Abfrage
     $link = mysqli_connect(

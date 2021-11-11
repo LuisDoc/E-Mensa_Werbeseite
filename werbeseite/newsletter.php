@@ -18,12 +18,10 @@ if(isset($_POST['Newsletter'])){
 
     if(InvalidUsername($vorname)!==false){
         header("Location: index.php?error=invalidUsername#Newsletter");
-        $_SESSION['email'] = $email;
         exit();
     }
     if(InvalidEmail($email)!==false){
         header("Location: index.php?error=invalidEmail#Newsletter");
-        $_SESSION['vorname'] = $vorname;
         exit();
     }
 
