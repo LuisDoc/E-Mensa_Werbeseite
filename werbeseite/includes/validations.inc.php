@@ -4,6 +4,8 @@
  * Luis, Diniz Do Carmo, 3275829
  * Nilusche, Liyanaarachchi, 3272466
  */
+
+// Funktion des newsletter.php um 'Benutzername' nach Validität zu überpüfen
 function InvalidUsername($vorname){
     if(empty($vorname))
         return true;
@@ -12,7 +14,7 @@ function InvalidUsername($vorname){
     }
     return false;
 }
-
+// Funktion des newsletter.php um 'E-Mail' nach Validität zu überpüfen
 function InvalidEmail($email){
     if(empty($email))
         return true;

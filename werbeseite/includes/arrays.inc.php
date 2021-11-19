@@ -119,7 +119,7 @@ function print_menu_with_database(){
 
     return $usedAllergen;
     }
-
+//Vorhandene Allergene werden ausgegeben
 function printAllergen($usedAllergen)
 {
     $link = mysqli_connect(
@@ -147,6 +147,7 @@ function printAllergen($usedAllergen)
         echo "</tr>";
     }
 }
+/*Statistiken darstellen*/
 function print_emensa(){
     $statistik= ["Y Anmeldungen zum Newsletter"];
     if(isset($_SESSION['visitCounter'])){

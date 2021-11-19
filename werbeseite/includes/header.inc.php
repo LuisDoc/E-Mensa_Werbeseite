@@ -3,6 +3,7 @@
 - Luis, Diniz Do Carmo, 3275829
 - Nilusche, Liyanaarachchi, 3272466
 -->
+<!--Einbinden der Navigationsleiste -->
 <section>
     <!-- Basic Grid -->
     <div class= "header">

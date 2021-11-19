@@ -3,6 +3,8 @@
 - Luis, Diniz Do Carmo, 3275829
 - Nilusche, Liyanaarachchi, 3272466
 -->
+
+<!--Einbinden des Footers -->
 <div class="foot">
     <nav>
             <span class = "footer_links">
