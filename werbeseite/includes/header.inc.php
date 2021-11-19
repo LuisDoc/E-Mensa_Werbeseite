@@ -7,7 +7,7 @@
     <!-- Basic Grid -->
     <div class= "header">
         <div class="header_left_picture">
-            <img class ="fh_logo"   src="/werbeseite/sources/Logo_FH-Aachen.jpg" alt="logo">
+            <img class ="fh_logo" src="/werbeseite/sources/Logo_FH-Aachen.jpg" alt="logo">
         </div>
         <!--Inneres Grid -->
         <div class="header_menu_reiter">

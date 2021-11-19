@@ -7,9 +7,6 @@
  */
     require "includes/arrays.inc.php";
     session_start();
-    /*
-     *
-     */
 ?>
 <!DOCTYPE html>
 <html lang=de dir="ltr">
@@ -135,17 +132,6 @@
             echo '<p class="successmessage"> Anmeldung für den Newsletter erfolgreich<br></p>';
         }
     }
-
-    // Ausgabe der CSV Datei
-    /*
-    $file = fopen("persons.csv","r");
-    while(! feof($file))
-    {
-        print_r(fgetcsv($file));
-        echo "<br>";
-    }
-    fclose($file);
-    */
     ?>
 
 </div>

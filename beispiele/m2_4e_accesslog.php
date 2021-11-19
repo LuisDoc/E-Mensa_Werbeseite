@@ -7,7 +7,7 @@
 $file = fopen('./accesslog.txt','a');
 
 $browser = $_SERVER['HTTP_USER_AGENT'];
-$line = "Datum: ".date('d-m-Y')." Uhrzeit: ".date("H:i")." IP-Adresse: ".$_SERVER['REMOTE_ADDR']." Webbrowser: ".($browser)."\r";
+$line = "Datum: ".date('d-m-Y')." Uhrzeit: ".date("H:i")." IP-Adresse: ".$_SERVER['REMOTE_ADDR']." Webbrowser: ".($browser)."\r\n";
 fwrite($file, $line);
 
 fclose($file);

@@ -182,6 +182,6 @@ function print_emensa(){
     mysqli_close($link);
 
 
-    //Vorher Menu Counter über Session
+    //Vorher Menu Counter über Session --> Realisierung der Aufgabe 1
     //echo '<div class="grid-mensa">'.$_SESSION['menuCounter'].' Speisen</div>';
 }
