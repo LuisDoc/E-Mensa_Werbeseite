@@ -76,6 +76,14 @@ class HomeController extends Controller
         
 
         /*
+            Was uns wichtig ist
+        */
+        $wichtig= [
+            "Beste frische saisonale Zutaten",
+            "Ausgewogene abwechlungsreiche Zutaten",
+            "Sauberkeit"
+        ];
+        /*
             Weiterleitung an View
         */
         Alert::success('Hello');
@@ -85,6 +93,7 @@ class HomeController extends Controller
         ->with('AlleAllergene',$vorkommendeAllergene)
         ->with('AllergeneProGericht',$allergeneProGericht)
         ->with('CounterNewsletterAnmeldungen',$counterNewsletterAnmeldungen)
-        ->with('CounterSpeisen',$counterSpeisen);  
+        ->with('CounterSpeisen',$counterSpeisen)
+        ->with('WasUnsWichtigIst',$wichtig);
     }
 }

@@ -1,26 +1,5 @@
 @extends('layouts.app')
-@section('header')
-    <section>
-        <!-- Basic Grid für Navigationsleiste und Titelbild links-->
-        <div class="header">
-            <div class="header_left_picture">
-                <a href="/">
-                    <!-- Logo Verlinkt zur LandingPage-->
-                    <img class="fh_logo" src="sources/Logo_FH-Aachen.jpg'" alt="logo">
-                </a>
 
-            </div>
-            <!--Inneres Grid für Menupunkte -->
-            <div class="header_menu_reiter">
-                <a href="/#Ankündigungen" class="header_links">Ankündigung</a>
-                <a href="/#Speisekarte" class="header_links">Speisen</a>
-                <a href="/#Zahlen" class="header_links">Zahlen</a>
-                <a href="/#Newsletter" class="header_links">Kontakt</a>
-                <a href="/#Wichtig" class="header_links">Wichtig für Uns</a>
-            </div>
-        </div>
-    </section>
-@endsection
 @section('content')
     <!-- Section für Titelbild-->
     <section>
@@ -155,11 +134,19 @@
             <input class="subm" type="submit" name="Newsletter" value="Zum Newsletter anmelden">
         </form>
     </section>
-@endsection
-
-
-@section('footer')
-
+    <!-- Section für Was uns wichtig ist -->
+    <section>
+        <h3><a name="Wichtig">Das ist uns wichtig</a></h3>
+        <section class="wichtig">
+            <div>
+                <ul class="list">
+                    @foreach ($WasUnsWichtigIst as $important)
+                        <li>{{ $important }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        </section>
+    </section>
 @endsection
 <?php
 

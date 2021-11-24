@@ -15,13 +15,47 @@
 </head>
 
 <body>
-    @include('sweetalert::alert')
     <!--Einbinden der Navigationsleiste -->
-    @yield('header')
+    <section>
+        <!-- Basic Grid für Navigationsleiste und Titelbild links-->
+        <div class="header">
+            <div class="header_left_picture">
+                <a href="/">
+                    <!-- Logo Verlinkt zur LandingPage-->
+                    <img class="fh_logo" src="sources/Logo_FH-Aachen.jpg'" alt="logo">
+                </a>
+
+            </div>
+            <!--Inneres Grid für Menupunkte -->
+            <div class="header_menu_reiter">
+                <a href="/#Ankündigungen" class="header_links">Ankündigung</a>
+                <a href="/#Speisekarte" class="header_links">Speisen</a>
+                <a href="/#Zahlen" class="header_links">Zahlen</a>
+                <a href="/#Newsletter" class="header_links">Kontakt</a>
+                <a href="/#Wichtig" class="header_links">Wichtig für Uns</a>
+            </div>
+        </div>
+    </section>
+
+    @include('sweetalert::alert')
 
     @yield('content')
 
-    @yield('footer')
+    <div class="foot">
+        <nav>
+            <span class="footer_links">
+                <a class="affiliates" href="#">(c) e mensa GmbH</a>
+                <a class="affiliates" href="#"> Do Carmo,&nbsp;&nbsp;Liyanaarachchi </a>
+                <a class="affiliates" href="#">Impressum</a>
+            </span>
+            <span class="social">
+                <a href="#"><img class="icon" src="/werbeseite/sources/facebook.png" alt="facebook"></a>
+                <a href="#"><img class="icon" src="/werbeseite/sources/googlep.png" alt="googleplus"></a>
+                <a href="#"><img class="icon" src="/werbeseite/sources/linkedIn.png" alt="linkedIn"></a>
+                <a href="#"><img class="icon" src="/werbeseite/sources/twitter.png" alt="twitter"></a>
+            </span>
+        </nav>
+    </div>
 
 
 </body>
