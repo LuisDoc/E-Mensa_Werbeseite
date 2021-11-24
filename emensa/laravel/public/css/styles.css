@@ -1,0 +1,423 @@
+/*Color Codes
+    turquoise Fh: #6cb3b9
+    shadow Fh: rgba(78, 130, 135, 1)
+
+ */
+
+
+/*
+    Allgemein
+ */
+html{
+    scroll-behavior: smooth;
+}
+body{
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+}
+h1{
+    margin:auto;
+    margin-top:20px;
+    margin-bottom: 10px;
+    text-align: center;
+    align-content: center;
+    width:25em;
+}
+h3{
+    margin:auto;
+    margin-top:20px;
+    margin-bottom: 10px;
+    text-align: center;
+    align-content: center;
+    width:25em;
+}
+/*
+    Header
+  */
+.header{
+    background: #6cb3b9;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 320px auto 320px;
+    height: 100px;
+}
+.header_left_picture{
+
+}
+.fh_logo{
+    display: flex;
+    justify-content: left;
+    height: 100px;
+    width: 226px;
+
+}
+.header_menu_reiter{
+    margin-left: 1.5em;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    justify-content:center;
+    align-content: center;
+}
+a.header_links,
+a.header_links:visited{
+    font-size: 20px;
+    margin-right: 2em;
+
+
+    padding: 14px 25px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+    align-content: center;
+    justfiy-content: center;
+}
+a.header_links:hover{
+    color:white;
+    background-color: rgba(46, 75, 78, 0.8);
+}
+/*
+    Title Picture
+ */
+.title_picture{
+    margin-top: 3em;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+.title_picture_itself{
+    width: 50em;
+    height: 30em;
+    box-shadow: -1px 5px 9px 4px rgba(0,0,0,.7);
+}
+/*
+    Ankuendigungen
+ */
+.ankuendigungen_heading,
+.speisen_heading{
+    margin-top: 3em;
+    text-align:center;
+}
+.ankuendigungen_text{
+    display: grid;
+    grid-template-rows: auto ;
+    justify-content: center;
+    align-content:center;
+}
+.ankuendigungen_text_field{
+    transition: 0.3s;
+    justify-content: center;
+    align-content:center;
+    width: 50em;
+}
+.ankuendigungen_text_field:hover{
+    transition: 0.5s;
+    transform: scale(1.15);
+}
+/*
+    Speisekarte
+ */
+.speisen_tabelle{
+    display:flex;
+    justify-content: center;
+    align-content: center;
+}
+#menu{
+    border-collapse: collapse;
+    border:1px solid rgba(46, 75, 78, 0.8);
+}
+#menu td, #menu th{
+
+    padding-left:3.25em;
+    padding-right:3.25em;
+
+}
+#menu tr{
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+    border:1px solid rgba(46, 75, 78, 0.8);
+}
+
+#menu tr:hover{
+    background-color: #ddd;
+
+}
+#menu th{
+    background-color:#6cb3b9;
+    color:white;
+
+}
+
+/*
+    Allergene
+ */
+.speisen_allergene{
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 1em;
+    font-size: 12px;
+}
+#allergene{
+    border-collapse: collapse;
+    border:1px solid rgba(46, 75, 78, 0.8);
+}
+#allergene td, #allergene th{
+    padding-left:1em;
+    padding-right:2em;
+
+}
+#allergene tr{
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+    border:1px solid rgba(46, 75, 78, 0.8);
+}
+#allergene tr:hover{
+    background-color: #ddd;
+}
+#allergene th{
+    background-color:#6cb3b9;
+    color:white;
+}
+
+.btn_wunschgericht{
+    display: flex;
+    justify-content: center;
+    margin-left: 53em;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    border-radius: 45px;
+    width: 200px;
+    height: 30px;
+
+    text-align: center;
+    text-decoration: none;
+    color: #000000;
+}
+.btn_wunschgericht:hover{
+    background-color: #6cb3b9;
+    box-shadow: 0px 15px 20px rgba(78, 130, 135, 1);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+
+
+
+/*
+    Mensa in Zahlen
+ */
+.Emensa_heading{
+    margin-top: 3em;
+}
+.Emensa{
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    grid-column-gap: 5px;
+    grid-template-columns: auto auto auto;
+}
+.grid-mensa{
+    text-align: center;
+    width: 16.5em;
+    height: 5em;
+    padding-top:3.5em;
+    font-size: larger;
+    font-weight: bold;
+
+}
+.dia{
+    box-shadow: -1px 5px 9px 4px rgba(0,0,0,.7);
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.dia:hover{
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+}
+
+
+
+/*
+    Newsletter Formular
+ */
+.formtitle{
+
+  margin:auto;
+  margin-top: 3em;
+  margin-bottom: 10px;
+  text-align: center;
+  align-content: center;
+  width:25em;
+}
+.formParagraph{
+  border-radius: 25px;
+  margin:auto;
+  margin-top:5px;
+  height:5em;
+  width:49em;
+  text-align: left;
+  border: solid 1px grey;
+  padding:10px;
+  margin-bottom:3em;
+  box-shadow:  -1px 5px 9px 4px rgba(0,0,0,.7);
+}
+
+.input{
+  height:2.5em;
+  padding: 16px 12px 0 12px;
+  box-shadow: inset 0 -1px 0;
+  background: #EFEFEF;
+  border: 0;
+  transition: 0.3s;
+  margin-right: 1em;
+}
+.input:hover{
+  background: #E1E8EB;
+    border-color: #6cb3b9;
+}
+
+.sel{
+  height:2em;
+  padding:7px 12px 0 12px;
+  background: #EFEFEF;
+  border: 0;
+  transition: 0.3s;
+}
+.sel:hover{
+  background: #E1E8EB;
+}
+
+.subm{
+  position:absolute;
+  margin-left: 17em;
+  margin-top: -2em;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  border-radius: 45px;
+  width: 200px;
+  height: 45px;
+}
+.subm:hover{
+  background-color: #6cb3b9;
+  box-shadow: 0px 15px 20px rgba(78, 130, 135, 1);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+/*
+    Wichtig für uns
+ */
+.wichtig{
+    margin:auto;
+    width: 25em;
+    text-align: left;
+    height:8em;
+}
+.list{
+    position: relative;
+    list-style-type: none;
+}
+.list li {
+    position: relative;
+    list-style-type: none;
+    padding-left: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.list li:before {
+    content: '✓';
+    display: block;
+    position: absolute;
+    left: 0;
+    border-color: #6cb3b9;
+    color: #6cb3b9;
+}
+
+/*
+    Footer
+ */
+nav{
+    margin-top: 0.9em;
+}
+.foot{
+    margin: auto;
+    margin-bottom: -0.8em;
+    margin-top: 5em;
+    width:100%;
+
+    height: 100px;
+    background-color: #6cb3b9;
+    border:solid 1px rgba(46, 75, 78, 0.8);
+    border-radius: 5px;
+}
+
+.social{
+    margin-left: 10em;
+    padding-top: 2em;
+}
+.icon{
+    margin-left: 1em;
+    margin-bottom: -1em;
+    -webkit-filter: grayscale(75%);
+    filter: grayscale(75%);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+.icon:hover{
+    transform: translateY(-7px);
+    box-shadow: 0px 15px 20px rgba(78, 130, 135, 1);
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+}
+.footer_links{
+    margin-left: 29em;
+    margin-bottom: 18em;
+}
+.affiliates, .affiliates:visited{
+    font-size: 20px;
+    margin-right: 1em;
+    padding: 14px 25px;
+    border-radius: 5px;
+    margin-top:-4em;
+    color:rgba(46, 75, 78, 0.8);
+    text-decoration: none;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+
+
+}
+
+.affiliates:hover{
+    color:white;
+    background-color: rgba(46, 75, 78, 0.8);
+}
+.vl{
+    color:rgba(46, 75, 78, 0.8);
+    height:20px;
+}
+
+/* Error-Handler messages*/
+.errormessage{
+    color:red;
+    margin:auto;
+    width:20em;
+    background-color: #FCD2D1;
+}
+.successmessage{
+    color:green;
+    margin:auto;
+    width:20em;
+    background-color: #D3E4CD;
+}
+
+.speiseplanimage{
+    width:10em;
+    height:5em;
+}
