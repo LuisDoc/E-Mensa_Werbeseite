@@ -9,6 +9,18 @@ session_start();
 
 //Wenn Daten an Newsletter über Post geschickt wurden
 if(isset($_POST['Newsletter'])){
+
+    //CSRF Token überprüfen
+    if(!$_POST['CSRFtoken']){
+        header("Location:wunschgerichte.php?error=tokennotexisting");
+        exit();
+    }
+    if($_POST['CSRFtoken'] !==$_SESSION['token']){
+        //header($_SERVER['SERVER_PROTOCOL'].'405 Method not allowed');
+        header("Location:wunschgerichte.php?error=tokeninvalid");
+        //header("Location:wunschgerichte.php?error=tokennotidentical");
+        exit();
+    }
     $vorname = $_POST['Vorname'];
     $email = $_POST['email'];
     $language =$_POST['language'];

@@ -12,11 +12,11 @@
         </div>
         <!--Inneres Grid -->
         <div class="header_menu_reiter">
-            <a href="#Ankündigungen" class = "header_links">Ankündigung</a>
-            <a href="#Speisekarte" class = "header_links">Speisen</a>
-            <a href="#Zahlen" class = "header_links">Zahlen</a>
-            <a href="#Newsletter" class = "header_links">Kontakt</a>
-            <a href="#Wichtig" class = "header_links">Wichtig für Uns</a>
+            <a href="index.php#Ankündigungen" class = "header_links">Ankündigung</a>
+            <a href="index.php#Speisekarte" class = "header_links">Speisen</a>
+            <a href="index.php#Zahlen" class = "header_links">Zahlen</a>
+            <a href="index.php#Newsletter" class = "header_links">Kontakt</a>
+            <a href="index.php#Wichtig" class = "header_links">Wichtig für Uns</a>
         </div>
     </div>
 </section>

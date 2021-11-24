@@ -105,6 +105,16 @@
     </div>
     <br>
     <br>
+    <!-- Button zur Webseite zur Gerichterstellung -->
+    <h3>
+        Ihr Wunschgericht ist nicht dabei ?
+    </h3>
+    <div class="wrapper">
+        <a class ="btn_wunschgericht" href="wunschgerichte.php">
+            Anfragen!
+        </a>
+    </div>
+
 </section>
 <h3><a class ="Emensa_heading" name ="Zahlen">E-Mensa in Zahlen</a></h3>
 
