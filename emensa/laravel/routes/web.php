@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,8 +16,8 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-
+Route::post('/SignUpNewsletter',[NewsletterController::class, 'signupNL']);
 
 Route::get('/',[HomeController::class, 'index']);
 
-Route::post('/signupNewsletter',[NewsletterController::class, 'signupNL']);
+

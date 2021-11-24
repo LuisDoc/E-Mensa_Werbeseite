@@ -13,7 +13,7 @@ class CreateTableNewsletter extends Migration
      */
     public function up()
     {
-        Schema::create('table_newsletter', function (Blueprint $table) {
+        Schema::create('newsletter', function (Blueprint $table) {
             $table->id();
             $table->string('username');
             $table->string('email');

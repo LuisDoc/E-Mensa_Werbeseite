@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('header')
     <section>
         <!-- Basic Grid für Navigationsleiste und Titelbild links-->
@@ -23,6 +22,7 @@
     </section>
 @endsection
 @section('content')
+    <!-- Section für Titelbild-->
     <section>
         <!-- Div für das Image-->
         <div class="title_picture">
@@ -128,17 +128,39 @@
         </div>
 
     </section>
+    <!-- Section für E-Mensa in Zahlen -->
+    <section>
+        <h3><a class="Emensa_heading" name="Zahlen">E-Mensa in Zahlen</a></h3>
+        <!-- E-Mensa in Zahlen -->
+        <img class="dia" src="sources/diagramm.png" alt="diagramm">
+        <div class="Emensa">
+            <div class="grid-mensa"> {{ Session::get('counterViewer') }} Besucher</div>
+            <div class="grid-mensa"> {{ $CounterNewsletterAnmeldungen }} Anmeldungen zum Newsletter</div>
+            <div class="grid-mensa"> {{ $CounterSpeisen }} Gerichte auf der Speisekarte</div>
+        </div>
+    </section>
+    <!-- Section für Newsletter Anmeldung -->
+    <section>
+        <form class="formParagraph" action="/SignUpNewsletter" method="post">
+            @csrf
+            <input class="input" type="text" name="Vorname" value="" placeholder="Vorname" required>
+            <input class="input" type="text" name="email" value="" placeholder="Email" required>
 
-    <h3><a class="Emensa_heading" name="Zahlen">E-Mensa in Zahlen</a></h3>
-
-    <!-- E-Mensa in Zahlen -->
-    <img class="dia" src="sources/diagramm.png" alt="diagramm">
-    <div class="Emensa">
-
-    </div>
+            <select class="sel" name="language">
+                <option value="Deutsch">Deutsch</option>
+                <option value="Englisch">Englisch</option>
+            </select><br><br>
+            <input type="checkbox" name="datenschutz" required>Den Datenschutzbestimmungen stimme ich zu
+            <input type="hidden" name="CSRFtoken" value="{{ csrf_token() }}">
+            <input class="subm" type="submit" name="Newsletter" value="Zum Newsletter anmelden">
+        </form>
+    </section>
 @endsection
 
 
 @section('footer')
 
 @endsection
+<?php
+
+?>
