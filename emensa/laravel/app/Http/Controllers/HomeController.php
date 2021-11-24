@@ -7,30 +7,53 @@ use DB;
 class HomeController extends Controller
 {
     public function index(){
-        $gerichte =DB::table('gericht')
-        ->select ('gericht.name','gericht.preis_intern','gericht.preis_extern',DB::raw('GROUP_CONCAT(gericht_hat_allergen.code)as Allergien'))
-        ->join('gericht_hat_allergen','gericht.id','=','gericht_hat_allergen.gericht_id')
-        ->pluck('gericht_hat_allergen.code')
-        ->orderBy('gericht.id')
+
+        $Allergene = DB::table('gericht_hat_allergen')
+        ->join('allergen','gericht_hat_allergen.code','=','allergen.code')
+        ->orderBy('gericht_hat_allergen.code')
+        ->get();
+
+        $gerichte = DB::table('gericht')
         ->limit(5)
+        ->orderBy('name')
         ->get();
 
 
-        dd($gerichte);
-        $allergene = [];
-
-
+        
+        
+       
+        /*
+        Berechnung aller vorkommenden Allergene
+        */
+        $vorkommendeAllergene = [];
+        $allergeneProGericht = [];
 
         foreach($gerichte as $gericht){
+            foreach($Allergene as $all){
+                if($all->gericht_id == $gericht->id){
+                    //Wenn für das Gericht schon Einträge vorhanden sind
+                    if(!empty($allergeneProGericht[$gericht->id])){
+                        $allergeneProGericht[$gericht->id] = $allergeneProGericht[$gericht->id]." ".$all->code;
+                    }
+                    else{
+                        $allergeneProGericht[$gericht->id] = $all->code;
+                    }
+                    
 
-            $allergeneProGericht = DB::table('gericht_hat_allergen')
-                                    ->where('gericht_id','=',$gericht->id)
-                                    ->get();
-
-
-            
+                    $gefunden = false;
+                    foreach($vorkommendeAllergene as $bereitsNotierteAllergene){
+                        if($bereitsNotierteAllergene->code == $all->code){
+                            $gefunden = true;
+                        }
+                    }
+                    if(!$gefunden){
+                        array_push($vorkommendeAllergene,$all);
+                    }
+                   
+                }
+            }
         }
-        
-        return view('index')->with('Gerichte',$gerichte);
+
+        return view('index')->with('Gerichte',$gerichte)->with('Allergene',$Allergene)->with('AlleAllergene',$vorkommendeAllergene)->with('AllergeneProGericht',$allergeneProGericht);
     }
 }

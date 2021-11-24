@@ -73,9 +73,13 @@
                             <td>{{ $gericht->name }}</td>
                             <td>{{ $gericht->preis_intern }}</td>
                             <td>{{ $gericht->preis_extern }}</td>
-                            <td>Noch kein Bild vorhanden</td>
-                            <td></td>
-                        </tr>;
+                            <td> Noch kein Bild vorhanden </td>
+                            @if (!empty($AllergeneProGericht[$gericht->id]))
+                                <td>{{ $AllergeneProGericht[$gericht->id] }}</td>
+                            @else
+                                <td> /</td>
+                            @endif
+                        </tr>
                     @empty
                         <tr>
                             <td>...</td>
@@ -97,7 +101,17 @@
                     </tr>
                 </thead>
                 <tbody>
-
+                    @forelse($AlleAllergene as $allergen)
+                        <tr>
+                            <td>{{ $allergen->code }}</td>
+                            <td>{{ $allergen->name }}</td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td>...</td>
+                            <td>...</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
