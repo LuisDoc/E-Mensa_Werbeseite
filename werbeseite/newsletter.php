@@ -58,6 +58,7 @@ if(isset($_POST['Newsletter'])){
         $_SESSION['newsletterCounter']++;
     }
     //Zurückleitung auf Index.php an den Anker Newsletter
+    unset($_SESSION['token']);
     header("Location: index.php?error=success#Newsletter");
 
 }else{

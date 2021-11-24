@@ -7,6 +7,10 @@
  */
     require "includes/arrays.inc.php";
     session_start();
+    if(!isset($_SESSION['token'])){
+        $_SESSION['token']=bin2hex(random_bytes(45));
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang=de dir="ltr">
@@ -141,7 +145,9 @@
         </select><br><br>
         <input type="checkbox" name="datenschutz" required>Den Datenschutzbestimmungen stimme ich zu
         <input class="subm" type="submit" name="Newsletter" value="Zum Newsletter anmelden">
-
+        <?php
+        echo '<input type="hidden" name="CSRFtoken" value ="'.$_SESSION['token'].'">';
+        ?>
     </form>
     <?php
     //Sollte ein Error existieren ist entweder das Passwort oder die Email falsch
@@ -160,6 +166,12 @@
         if($_GET['error']=="success"){
             //Eine Nachricht wird ausgegeben, um die erfolgreiche Anmeldung zu bestätigen
             echo '<p class="successmessage"> Anmeldung für den Newsletter erfolgreich<br></p>';
+        }
+        if($_GET['error'] == "tokennotexisting"){
+            echo '<p class="errormessage"> Method Not Allowed: Token existiert nicht<br></p>';
+        }
+        if($_GET['error'] == "tokennotexisting"){
+            echo '<p class="errormessage"> Method Not Allowed: Token sind nicht identisch<br></p>';
         }
     }
     ?>

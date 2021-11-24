@@ -39,3 +39,10 @@ function InvalidEmail($email){
         return true;
     }
 }
+
+function InvalidWunschgerichtName($name){
+    if(empty($name)){
+        return true;
+    }
+    return false;
+}
