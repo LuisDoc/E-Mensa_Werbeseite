@@ -17,6 +17,7 @@ class CreateTableNewsletter extends Migration
             $table->id();
             $table->string('username');
             $table->string('email');
+            $table->enum('language',['german', 'english'])->default('german');
             $table->timestamps();
         });
     }
