@@ -27,7 +27,7 @@ class NewsletterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|regex:/^[a-zA-Z]+$/u|max:50',
+            'name' => 'required',
             'email'=>['required','unique:newsletter', new DomainRules()],
             'language'=>'required',
         ];
