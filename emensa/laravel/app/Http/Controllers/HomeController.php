@@ -86,7 +86,7 @@ class HomeController extends Controller
         /*
             Weiterleitung an View
         */
-        Alert::success('Hello');
+        //Alert::success('Hello');
         return view('index')
         ->with('Gerichte',$gerichte)
         ->with('Allergene',$Allergene)

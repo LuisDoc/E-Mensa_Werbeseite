@@ -7,14 +7,15 @@
     <!-- Titel der Webseite unter Tabs-->
     <title>Ihre E-Mensa</title>
     <!-- Einbindung von Stylesheet und fonts/sources-->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <script src="{{ asset('js/app.js') }}"></script>
+
 </head>
 
 <body>
+    @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
     <!--Einbinden der Navigationsleiste -->
     <section>
         <!-- Basic Grid für Navigationsleiste und Titelbild links-->
@@ -22,7 +23,7 @@
             <div class="header_left_picture">
                 <a href="/">
                     <!-- Logo Verlinkt zur LandingPage-->
-                    <img class="fh_logo" src="sources/Logo_FH-Aachen.jpg'" alt="logo">
+                    <img class="fh_logo" src="{{asset('sources/Logo_FH-Aachen.jpg')}}" alt="logo">
                 </a>
 
             </div>
@@ -49,10 +50,10 @@
                 <a class="affiliates" href="#">Impressum</a>
             </span>
             <span class="social">
-                <a href="#"><img class="icon" src="/werbeseite/sources/facebook.png" alt="facebook"></a>
-                <a href="#"><img class="icon" src="/werbeseite/sources/googlep.png" alt="googleplus"></a>
-                <a href="#"><img class="icon" src="/werbeseite/sources/linkedIn.png" alt="linkedIn"></a>
-                <a href="#"><img class="icon" src="/werbeseite/sources/twitter.png" alt="twitter"></a>
+                <a href="#"><img class="icon" src="sources/facebook.png" alt="facebook"></a>
+                <a href="#"><img class="icon" src="sources/googlep.png" alt="googleplus"></a>
+                <a href="#"><img class="icon" src="sources/linkedIn.png" alt="linkedIn"></a>
+                <a href="#"><img class="icon" src="sources/twitter.png" alt="twitter"></a>
             </span>
         </nav>
     </div>

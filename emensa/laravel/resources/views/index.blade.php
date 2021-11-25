@@ -119,18 +119,24 @@
         </div>
     </section>
     <!-- Section für Newsletter Anmeldung -->
-    <section>
+    <section id="newsletter">
+        @forelse ($errors->all() as $error)
+                <li class="errormessage">{{ $error }}</li>
+        @endforeach
+        
+        @if(Session::has('success'))
+                <li class="successmessage">{{session()->get('success')}}</li>
+        @endif
         <form class="formParagraph" action="/SignUpNewsletter" method="post">
             @csrf
-            <input class="input" type="text" name="Vorname" value="" placeholder="Vorname" required>
+            <input class="input" type="text" name="name" value="" placeholder="Name" required>
             <input class="input" type="text" name="email" value="" placeholder="Email" required>
 
             <select class="sel" name="language">
-                <option value="Deutsch">Deutsch</option>
-                <option value="Englisch">Englisch</option>
+                <option value="german">Deutsch</option>
+                <option value="english">Englisch</option>
             </select><br><br>
             <input type="checkbox" name="datenschutz" required>Den Datenschutzbestimmungen stimme ich zu
-            <input type="hidden" name="CSRFtoken" value="{{ csrf_token() }}">
             <input class="subm" type="submit" name="Newsletter" value="Zum Newsletter anmelden">
         </form>
     </section>
