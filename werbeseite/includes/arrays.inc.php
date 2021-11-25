@@ -30,6 +30,7 @@ function print_menu(){
         5 => ["Dönerpizza", 4.50, 7.50, '<img class="speiseplanimage"src="image/Dönerpizza.png" alt="Dönerpizza">'],
         6 => ["...", "...","..."]
     ];
+    //Menu Counter wurde inkrementiert, um das Zählen der Menus zu realisieren
     $_SESSION['menuCounter'] = sizeof($menu)-1;
 
     foreach($menu as $key=> $value){

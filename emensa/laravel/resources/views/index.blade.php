@@ -121,11 +121,11 @@
     <!-- Section für Newsletter Anmeldung -->
     <section id="newsletter">
         @forelse ($errors->all() as $error)
-                <li class="errormessage">{{ $error }}</li>
+            <li class="errormessage">{{ $error }}</li>
         @endforeach
-        
-        @if(Session::has('success'))
-                <li class="successmessage">{{session()->get('success')}}</li>
+
+        @if (Session::has('success'))
+            <li class="successmessage">{{ session()->get('success') }}</li>
         @endif
         <form class="formParagraph" action="/SignUpNewsletter" method="post">
             @csrf
