@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
 use DB;
+use Carbon\Carbon;
 class HomeController extends Controller
 {
     public function index(){
@@ -95,5 +96,45 @@ class HomeController extends Controller
         ->with('CounterNewsletterAnmeldungen',$counterNewsletterAnmeldungen)
         ->with('CounterSpeisen',$counterSpeisen)
         ->with('WasUnsWichtigIst',$wichtig);
+    }
+    public function requestMeal(){
+        return view ('wunschgerichte');
+    }
+    public function validateMeal(Request $request){
+        $name = $request->name;
+        $email = $request->email;
+        $gerichtname = $request->gerichtname;
+        $beschreibung = $request->beschreibung;
+
+        //Kontrollieren des Namens
+        if(empty($name)){
+            $name = "anonym";
+        }
+        //Kontrollieren der Email
+        if(empty($email)){
+            Alert::error('Fehler','Bitte geben Sie eine Email an');
+            return view('wunschgerichte');
+        }
+
+        //Kontrollieren des Gerichtnamen
+        if(empty($gerichtname)){
+            Alert::error('Fehler','Bitte geben Sie einen Gerichtnamen an');
+            return view('wunschgerichte');
+        }
+        //Beschreibung darf leer bleiben
+
+
+        //Daten können hinzugefügt werden
+        DB::table('wunschgericht')
+        ->insert([
+            'email' => $email,
+            'name' => $name,
+            'erstellungsdatum' => Carbon::now(),
+            'gericht' => $gerichtname,
+            'beschreibung' => $beschreibung
+        ]);
+
+        Alert::success('Erfolg','Ihr Wunschgericht wurde erfolgreich weitergeleitet');
+        return view('wunschgerichte');
     }
 }

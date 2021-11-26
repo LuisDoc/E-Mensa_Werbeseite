@@ -24,6 +24,11 @@ Route::get('/',[HomeController::class, 'index']);
 
 
 /*
+Wunschgerichte Webseite
+*/
+Route::get('/requestMeal',[HomeController::class, 'requestMeal']);
+Route::post('/sendWunschgericht',[HomeController::class, 'validateMeal']);
+/*
 Sortierungen
 */
 Route::get('/showNewsletterAdmin/NameAsc',[NLAdminPanel::class,'viewPanelSortedByNameAsc']);

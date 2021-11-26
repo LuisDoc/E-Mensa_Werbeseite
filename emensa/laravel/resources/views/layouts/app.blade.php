@@ -9,6 +9,7 @@
     <!-- Einbindung von Stylesheet und fonts/sources-->
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/adminPanelStyle.css">
+    <link rel="stylesheet" href="/css/wunschgericht.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">

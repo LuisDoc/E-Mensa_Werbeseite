@@ -101,7 +101,7 @@
             Ihr Wunschgericht ist nicht dabei ?
         </h3>
         <div class="wrapper">
-            <a class="btn_wunschgericht" href="wunschgerichte.php">
+            <a class="btn_wunschgericht" href="/requestMeal">
                 Anfragen!
             </a>
         </div>
@@ -154,6 +154,3 @@
         </section>
     </section>
 @endsection
-<?php
-
-?>

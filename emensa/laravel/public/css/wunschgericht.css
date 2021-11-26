@@ -1,0 +1,42 @@
+#firstRow {
+    margin-top: 2em;
+}
+#secondRow {
+    margin-top: 1em;
+}
+
+.wunschgericht_smallinput {
+    height: 2.5em;
+    padding: 16px 12px 0 12px;
+    box-shadow: inset 0 -1px 0;
+    background: #efefef;
+    border: 0;
+    transition: 0.3s;
+    margin-right: 1em;
+}
+.wunschgericht_biginput {
+    height: 2.5em;
+    padding: 16px 12px 0 12px;
+    box-shadow: inset 0 -1px 0;
+    background: #efefef;
+    border: 0;
+    transition: 0.3s;
+    margin-top: 1em;
+    margin-right: 1em;
+}
+.wunschgericht_submit {
+    position: absolute;
+    margin-top: 1em;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    border-radius: 45px;
+    width: 200px;
+    height: 45px;
+}
+.wunschgericht_submit:hover {
+    background-color: #6cb3b9;
+    box-shadow: 0px 15px 20px rgba(78, 130, 135, 1);
+    color: #fff;
+    transform: translateY(-7px);
+}
