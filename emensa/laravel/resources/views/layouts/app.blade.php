@@ -9,6 +9,15 @@
     <!-- Einbindung von Stylesheet und fonts/sources-->
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/adminPanelStyle.css">
+    <link rel="stylesheet" href="/css/allergenStyle.css">
+    <link rel="stylesheet" href="/css/announcementsStyle.css">
+    <link rel="stylesheet" href="/css/FooterStyle.css">
+    <link rel="stylesheet" href="/css/headerStyle.css">
+    <link rel="stylesheet" href="/css/importantForUsStyle.css">
+    <link rel="stylesheet" href="/css/MensaInNumbersStyle.css">
+    <link rel="stylesheet" href="/css/menuStyles.css">
+    <link rel="stylesheet" href="/css/newsletterFormularStyles.css">
+    <link rel="stylesheet" href="/css/titlePictureStyle.css">
     <link rel="stylesheet" href="/css/wunschgericht.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

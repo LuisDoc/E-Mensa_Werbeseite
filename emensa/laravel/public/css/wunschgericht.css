@@ -1,3 +1,25 @@
+.btn_wunschgericht {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    border-radius: 45px;
+    width: 200px;
+    height: 30px;
+
+    text-align: center;
+    text-decoration: none;
+    color: #000000;
+}
+.btn_wunschgericht:hover {
+    background-color: #6cb3b9;
+    box-shadow: 0px 15px 20px rgba(78, 130, 135, 1);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
 #firstRow {
     margin-top: 2em;
 }

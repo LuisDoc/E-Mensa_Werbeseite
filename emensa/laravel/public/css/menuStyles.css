@@ -1,0 +1,30 @@
+/*
+    Speisekarte
+ */
+.speisen_tabelle {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+#menu {
+    border-collapse: collapse;
+    border: 1px solid rgba(46, 75, 78, 0.8);
+}
+#menu td,
+#menu th {
+    padding-left: 3.25em;
+    padding-right: 3.25em;
+}
+#menu tr {
+    -webkit-transition: 0.2s ease-in-out;
+    transition: 0.2s ease-in-out;
+    border: 1px solid rgba(46, 75, 78, 0.8);
+}
+
+#menu tr:hover {
+    background-color: #ddd;
+}
+#menu th {
+    background-color: #6cb3b9;
+    color: white;
+}

@@ -1,0 +1,40 @@
+.header {
+    background: #6cb3b9;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 320px auto 320px;
+    height: 100px;
+}
+.header_left_picture {
+}
+.fh_logo {
+    display: flex;
+    justify-content: left;
+    height: 100px;
+    width: 226px;
+}
+.header_menu_reiter {
+    margin-left: 1.5em;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    justify-content: center;
+    align-content: center;
+}
+a.header_links,
+a.header_links:visited {
+    font-size: 20px;
+    margin-right: 2em;
+
+    padding: 14px 25px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    -webkit-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+    align-content: center;
+    justfiy-content: center;
+}
+a.header_links:hover {
+    color: white;
+    background-color: rgba(46, 75, 78, 0.8);
+}

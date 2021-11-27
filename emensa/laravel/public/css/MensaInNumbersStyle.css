@@ -1,0 +1,32 @@
+/*
+    Mensa in Zahlen
+ */
+.Emensa_heading {
+    margin-top: 3em;
+}
+.Emensa {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    grid-column-gap: 5px;
+    grid-template-columns: auto auto auto;
+}
+.grid-mensa {
+    text-align: center;
+    width: 16.5em;
+    height: 5em;
+    padding-top: 3.5em;
+    font-size: larger;
+    font-weight: bold;
+}
+.dia {
+    box-shadow: -1px 5px 9px 4px rgba(0, 0, 0, 0.7);
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    -webkit-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+}
+.dia:hover {
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+}

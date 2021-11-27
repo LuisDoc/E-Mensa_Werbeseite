@@ -1,0 +1,24 @@
+/*
+    Ankuendigungen
+ */
+.ankuendigungen_heading,
+.speisen_heading {
+    margin-top: 3em;
+    text-align: center;
+}
+.ankuendigungen_text {
+    display: grid;
+    grid-template-rows: auto;
+    justify-content: center;
+    align-content: center;
+}
+.ankuendigungen_text_field {
+    transition: 0.3s;
+    justify-content: center;
+    align-content: center;
+    width: 50em;
+}
+.ankuendigungen_text_field:hover {
+    transition: 0.5s;
+    transform: scale(1.15);
+}
