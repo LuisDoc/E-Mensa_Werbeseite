@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NLAdminPanel;
-
+use App\Http\Controllers\ExampleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,5 +37,12 @@ Route::get('/showNewsletterAdmin/EmailAsc',[NLAdminPanel::class,'viewPanelSorted
 Suchen
 */
 Route::post("showNewsletterAdmin/search",[NLAdminPanel::class,'search']);
-
 Route::get('/showNewsletterAdmin',[NLAdminPanel::class, 'viewPanel']);
+
+/*
+Aufgabe 6
+*/
+Route::get('m4_6a_queryparameter',[ExampleController::class, 'queryparameter']);
+Route::get('m4_6b_kategorie',[ExampleController::class,'kategorie']);
+Route::get('m4_6c_gerichte',[ExampleController::class,'gerichte']);
+Route::get('m4_6d_layout',[ExampleController::class,'pick_page']);
