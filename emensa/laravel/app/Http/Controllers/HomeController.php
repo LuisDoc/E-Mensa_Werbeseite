@@ -102,10 +102,16 @@ class HomeController extends Controller
         return view ('wunschgerichte');
     }
     public function validateMeal(WunschgerichtRequest $request){
+        //Variablen verteilen
         $name = $request->name;
         $email = $request->email;
         $gericht = $request->gericht;
         $beschreibung = $request->beschreibung;
+        
+        //Name auf Inhalt überprüfen
+        if(empty($name)){
+            $name = "anonym"; //Wenn der Name leer ist, soll dieser auf anonym gesetzt werden
+        }
 
         //Daten können hinzugefügt werden
         DB::table('wunschgericht')

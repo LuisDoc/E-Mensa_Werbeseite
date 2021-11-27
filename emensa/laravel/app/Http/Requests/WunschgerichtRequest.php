@@ -24,7 +24,6 @@ class WunschgerichtRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
             'gericht' =>'required',
             'email' => ['required', new DomainRules()],
             
