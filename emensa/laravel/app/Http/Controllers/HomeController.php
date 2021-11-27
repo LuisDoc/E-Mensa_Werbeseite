@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Requests\WunschgerichtRequest;
 use DB;
 use Carbon\Carbon;
 class HomeController extends Controller
@@ -100,29 +101,11 @@ class HomeController extends Controller
     public function requestMeal(){
         return view ('wunschgerichte');
     }
-    public function validateMeal(Request $request){
+    public function validateMeal(WunschgerichtRequest $request){
         $name = $request->name;
         $email = $request->email;
-        $gerichtname = $request->gerichtname;
+        $gericht = $request->gericht;
         $beschreibung = $request->beschreibung;
-
-        //Kontrollieren des Namens
-        if(empty($name)){
-            $name = "anonym";
-        }
-        //Kontrollieren der Email
-        if(empty($email)){
-            Alert::error('Fehler','Bitte geben Sie eine Email an');
-            return view('wunschgerichte');
-        }
-
-        //Kontrollieren des Gerichtnamen
-        if(empty($gerichtname)){
-            Alert::error('Fehler','Bitte geben Sie einen Gerichtnamen an');
-            return view('wunschgerichte');
-        }
-        //Beschreibung darf leer bleiben
-
 
         //Daten können hinzugefügt werden
         DB::table('wunschgericht')
@@ -130,11 +113,11 @@ class HomeController extends Controller
             'email' => $email,
             'name' => $name,
             'erstellungsdatum' => Carbon::now(),
-            'gericht' => $gerichtname,
+            'gericht' => $gericht,
             'beschreibung' => $beschreibung
         ]);
 
         Alert::success('Erfolg','Ihr Wunschgericht wurde erfolgreich weitergeleitet');
-        return view('wunschgerichte');
+        return redirect('/requestMeal');
     }
 }

@@ -120,13 +120,9 @@
     </section>
     <!-- Section für Newsletter Anmeldung -->
     <section id="newsletter">
-        @forelse ($errors->all() as $error)
-            <li class="errormessage">{{ $error }}</li>
+        @foreach ($errors->all() as $error)
+                <?php Alert::error("Fehler",$error)?>;
         @endforeach
-
-        @if (Session::has('success'))
-            <li class="successmessage">{{ session()->get('success') }}</li>
-        @endif
         <form class="formParagraph" action="/SignUpNewsletter" method="post">
             @csrf
             <input class="input" type="text" name="name" value="" placeholder="Name" required>
