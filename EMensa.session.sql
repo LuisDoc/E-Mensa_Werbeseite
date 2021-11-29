@@ -1,2 +1,2 @@
-select count(id) as AnzahlGerichte
-from gericht;
+select *
+from gericht_hat_kategorie;

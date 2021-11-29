@@ -29,26 +29,24 @@
     <div id="page-container">
         <div id="content-wrap">
             <!--Einbinden der Navigationsleiste -->
-            <section>
-                <!-- Basic Grid für Navigationsleiste und Titelbild links-->
-                <div class="header">
-                    <div class="header_left_picture">
-                        <a href="/">
-                            <!-- Logo Verlinkt zur LandingPage-->
-                            <img class="fh_logo" src="{{ asset('sources/Logo_FH-Aachen.jpg') }}" alt="logo">
-                        </a>
+            <!-- Basic Grid für Navigationsleiste und Titelbild links-->
+            <div class="header">
+                <div class="header_left_picture">
+                    <a href="/">
+                        <!-- Logo Verlinkt zur LandingPage-->
+                        <img class="fh_logo" src="{{ asset('sources/Logo_FH-Aachen.jpg') }}" alt="logo">
+                    </a>
 
-                    </div>
-                    <!--Inneres Grid für Menupunkte -->
-                    <div class="header_menu_reiter">
-                        <a href="/#Ankündigungen" class="header_links">Ankündigung</a>
-                        <a href="/#Speisekarte" class="header_links">Speisen</a>
-                        <a href="/#Zahlen" class="header_links">Zahlen</a>
-                        <a href="/#Newsletter" class="header_links">Kontakt</a>
-                        <a href="/#Wichtig" class="header_links">Wichtig für Uns</a>
-                    </div>
                 </div>
-            </section>
+                <!--Inneres Grid für Menupunkte -->
+                <div class="header_menu_reiter">
+                    <a href="/#Ankündigungen" class="header_links">Ankündigung</a>
+                    <a href="/#Speisekarte" class="header_links">Speisen</a>
+                    <a href="/#Zahlen" class="header_links">Zahlen</a>
+                    <a href="/#Newsletter" class="header_links">Kontakt</a>
+                    <a href="/#Wichtig" class="header_links">Wichtig für Uns</a>
+                </div>
+            </div>
 
             @include('sweetalert::alert')
 

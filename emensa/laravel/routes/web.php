@@ -4,7 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\NLAdminPanel;
+use App\Http\Controllers\NLAdminPanelController;
 use App\Http\Controllers\ExampleController;
 /*
 |--------------------------------------------------------------------------
@@ -31,13 +31,13 @@ Route::post('/sendWunschgericht',[HomeController::class, 'validateMeal']);
 /*
 Sortierungen
 */
-Route::get('/showNewsletterAdmin/NameAsc',[NLAdminPanel::class,'viewPanelSortedByNameAsc']);
-Route::get('/showNewsletterAdmin/EmailAsc',[NLAdminPanel::class,'viewPanelSortedByEmailAsc']);
+Route::get('/showNewsletterAdmin/NameAsc',[NLAdminPanelController::class,'viewPanelSortedByNameAsc']);
+Route::get('/showNewsletterAdmin/EmailAsc',[NLAdminPanelController::class,'viewPanelSortedByEmailAsc']);
 /*
 Suchen
 */
-Route::post("showNewsletterAdmin/search",[NLAdminPanel::class,'search']);
-Route::get('/showNewsletterAdmin',[NLAdminPanel::class, 'viewPanel']);
+Route::post("showNewsletterAdmin/search",[NLAdminPanelController::class,'search']);
+Route::get('/showNewsletterAdmin',[NLAdminPanelController::class, 'viewPanel']);
 
 /*
 Aufgabe 6

@@ -2,14 +2,12 @@
 
 @section('content')
     <div class="SortBar">
-        <button><a class="dropdown-item" href="/showNewsletterAdmin/NameAsc">Name aufsteigend</a></button>
-        <button><a class="dropdown-item" href="/showNewsletterAdmin/EmailAsc">Email aufsteigend</a></button>
-
-        <form class="searchForm" method="post" action="/showNewsletterAdmin/search">
+        <a href="/showNewsletterAdmin/NameAsc">Name aufsteigend</a>
+        <a href="/showNewsletterAdmin/EmailAsc">Email aufsteigend</a>
+        <form method="post" action="/showNewsletterAdmin/search">
             @csrf
-            <input class="searchFormInputField" type="search" name="searchText" placeholder="Filtern nach"
-                aria-label="Search">
-            <button class="searchFormSubmit" type="submit">Submit</button>
+            <input type="search" name="searchText" placeholder="Filtern nach" aria-label="Search">
+            <button type="submit">Submit</button>
         </form>
     </div>
 

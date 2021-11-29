@@ -8,7 +8,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 use DB;
 
-class NLAdminPanel extends Controller
+class NLAdminPanelController extends Controller
 {
     public function viewPanel(){
         
@@ -28,7 +28,7 @@ class NLAdminPanel extends Controller
         $search = $request->searchText;
         
         if(empty($search)){
-            return viewPanel();
+            return redirect ("/showNewsletterAdmin");
         }
         
         $filteredRegistrations = DB::table('newsletter')
