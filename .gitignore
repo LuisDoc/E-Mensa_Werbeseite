@@ -2,3 +2,4 @@ beispiele/accesslog.txt
 werbeseite/persons.csv
 EMensa.sessions.sql
 .env
+emensa/laravel/getForeignKeys.sql
