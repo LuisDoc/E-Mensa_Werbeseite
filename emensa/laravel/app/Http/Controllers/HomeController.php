@@ -113,14 +113,18 @@ class HomeController extends Controller
             $name = "anonym"; //Wenn der Name leer ist, soll dieser auf anonym gesetzt werden
         }
 
+        //Ersteller anlegen
+        DB::table('ersteller')->insert([
+            'name' => $name,
+            'email' => $email
+        ]);
         //Daten können hinzugefügt werden
         DB::table('wunschgericht')
         ->insert([
-            'email' => $email,
-            'name' => $name,
-            'erstellungsdatum' => Carbon::now(),
-            'gericht' => $gericht,
-            'beschreibung' => $beschreibung
+            'created_at' => Carbon::now(),
+            'gerichtname' => $gericht,
+            'beschreibung' => $beschreibung,
+            'ersteller_email' => $email
         ]);
 
         Alert::success('Erfolg','Ihr Wunschgericht wurde erfolgreich weitergeleitet');
