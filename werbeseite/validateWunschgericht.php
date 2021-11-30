@@ -32,14 +32,28 @@ if(isset($_POST['submit'])){
         exit();
     }
 
-    $conn= new mysqli('localhost','root','','emensawerbeseite');
-    $stmt = $conn->prepare("INSERT INTO wunschgericht (name, email, beschreibung,gericht) VALUES(?,?,?,?)");
-    $stmt->bind_param('ssss',$name, $email, $beschreibung, $gerichtname);
+    date_default_timezone_set('Europe/Berlin');
+    $date = date("Y/m/d");
+    $conn= new mysqli('localhost','root','','emensawerbeseite',3306);
+    $stmt = $conn->prepare("INSERT INTO emensawerbeseite.ersteller (name, email) VALUES(?,?) ON DUPLICATE KEY UPDATE email = ?;");
+    $stmt->bind_param('sss',$name, $email,$email);
     if(!$stmt->execute()){
-
-        header("Location: wunschgerichte.php?error=stmterror");
+        echo $stmt->error;
+       // header("Location: wunschgerichte.php?error=stmterror");
         exit();
     }
+
+
+    $stmt = $conn->prepare("INSERT INTO emensawerbeseite.wunschgericht 
+    (wunschgericht.gerichtname, wunschgericht.beschreibung, wunschgericht.ersteller_email, wunschgericht.created_at) VALUES(?,?,?,?)");
+    $stmt->bind_param('ssss', $gerichtname,$beschreibung, $email,$date);
+    if(!$stmt->execute()){
+
+        echo $stmt->error;
+        //header("Location: wunschgerichte.php?error=stmterror");
+        exit();
+    }
+
     unset($_SESSION['token']);
     header("Location: wunschgerichte.php?error=success");
 
