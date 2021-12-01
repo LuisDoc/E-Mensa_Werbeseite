@@ -7,16 +7,17 @@ use App\Http\Requests\NewsletterRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 use DB;
+use App\Models\Newsletter;
 class NewsletterController extends Controller
 {
     public function signupNL(NewsletterRequest $request){
 
-        DB::table('newsletter')->insert([
+        Newsletter::create([
             'email' =>$request->email,
             'username' => $request->name,
             'language'=>$request->language,
         ]);
-        //Alert::success('Erfolg','Anmeldung für den Newsletter erfolgreich');
+        
         session()->flash('success','Anmeldung für den Newsletter erfolgreich');
         return redirect('/#newsletter');
     }

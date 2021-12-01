@@ -5,6 +5,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\WunschgerichtRequest;
+use App\Models\Ersteller;
+use App\Models\Wunschgericht;
+use App\Models\Gericht;
+use App\Models\Kategorie;
+use App\Models\Newsletter;
+use App\Models\Allergen;
 use DB;
 use Carbon\Carbon;
 class HomeController extends Controller
@@ -13,45 +19,35 @@ class HomeController extends Controller
         /*
             Informationen für alle Gerichte berechnen
         */
-        $Allergene = DB::table('gericht_hat_allergen')
-        ->join('allergen','gericht_hat_allergen.code','=','allergen.code')
-        ->orderBy('gericht_hat_allergen.code')
-        ->get();
-
-        $gerichte = DB::table('gericht')
+        $gerichte = Gericht::offset(0)
         ->limit(5)
-        ->orderBy('name')
+        ->orderBy('name', 'asc')
         ->get();
-        /*
-        Berechnung aller vorkommenden Allergene
-        */
-        $vorkommendeAllergene = [];
-        $allergeneProGericht = [];
 
-        foreach($gerichte as $gericht){
-            foreach($Allergene as $all){
-                if($all->gericht_id == $gericht->id){
-                    //Wenn für das Gericht schon Einträge vorhanden sind
-                    if(!empty($allergeneProGericht[$gericht->id])){
-                        $allergeneProGericht[$gericht->id] = $allergeneProGericht[$gericht->id]." ".$all->code;
-                    }
-                    else{
-                        $allergeneProGericht[$gericht->id] = $all->code;
-                    }
-                    
-                    $gefunden = false;
-                    foreach($vorkommendeAllergene as $bereitsNotierteAllergene){
-                        if($bereitsNotierteAllergene->code == $all->code){
-                            $gefunden = true;
-                        }
-                    }
-                    if(!$gefunden){
-                        array_push($vorkommendeAllergene,$all);
-                    }
-                   
+        $GerichtAllergene = Gericht::with('allergene')->orderBy('name', 'asc')->get();
+        $allergeneProGericht=array(
+            0=> $GerichtAllergene->first()->allergene, 
+            1=> $GerichtAllergene->get(1)->allergene, 
+            2=> $GerichtAllergene->get(2)->allergene, 
+            3=> $GerichtAllergene->get(3)->allergene, 
+            4=> $GerichtAllergene->get(4)->allergene, 
+            );
+        $Allergene = [];
+        $inAllergene = false;
+        foreach($allergeneProGericht as $allergenProGericht){
+            foreach($allergenProGericht  as $allergene){
+                foreach($Allergene as $val){
+                    if($val->code == $allergene->code )
+                        $inAllergene=true;
                 }
+                if(!$inAllergene)
+                    array_push($Allergene, $allergene);
+                $inAllergene=false;
+                    
             }
         }
+       
+
         /*
             Informationen für E-Mensa in Zahlen sammeln
         */
@@ -69,12 +65,12 @@ class HomeController extends Controller
         //
         // Berechnung NewsletterAnmneldungen
         //
-        $counterNewsletterAnmeldungen = DB::table('newsletter')->count();
+        $counterNewsletterAnmeldungen = Newsletter::all()->count();
         
         //
         // Berechnung der Menge an Speisen
         //
-        $counterSpeisen = DB::table('gericht')->count();;
+        $counterSpeisen =Gericht::all()->count();
         
 
         /*
@@ -92,7 +88,6 @@ class HomeController extends Controller
         return view('index')
         ->with('Gerichte',$gerichte)
         ->with('Allergene',$Allergene)
-        ->with('AlleAllergene',$vorkommendeAllergene)
         ->with('AllergeneProGericht',$allergeneProGericht)
         ->with('CounterNewsletterAnmeldungen',$counterNewsletterAnmeldungen)
         ->with('CounterSpeisen',$counterSpeisen)
@@ -114,18 +109,20 @@ class HomeController extends Controller
         }
 
         //Ersteller anlegen
-        DB::table('ersteller')->insert([
+
+        Ersteller::firstOrCreate([
             'name' => $name,
             'email' => $email
         ]);
+
         //Daten können hinzugefügt werden
-        DB::table('wunschgericht')
-        ->insert([
+        Wunschgericht::create([
             'created_at' => Carbon::now(),
             'gerichtname' => $gericht,
             'beschreibung' => $beschreibung,
             'ersteller_email' => $email
         ]);
+
 
         Alert::success('Erfolg','Ihr Wunschgericht wurde erfolgreich weitergeleitet');
         return redirect('/requestMeal');

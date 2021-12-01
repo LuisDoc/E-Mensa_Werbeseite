@@ -48,8 +48,13 @@
                         <td>{{ $gericht->preis_intern }}</td>
                         <td>{{ $gericht->preis_extern }}</td>
                         <td> Noch kein Bild vorhanden </td>
-                        @if (!empty($AllergeneProGericht[$gericht->id]))
-                            <td>{{ $AllergeneProGericht[$gericht->id] }}</td>
+                        @if (!empty($AllergeneProGericht[$loop->index]))
+                            <td>
+                            @foreach($AllergeneProGericht[$loop->index] as $allergen)
+                                {{$allergen->code}}
+                                @if( !$loop->last) , @endif
+                            @endforeach
+                            </td>
                         @else
                             <td> /</td>
                         @endif
@@ -75,7 +80,7 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse($AlleAllergene as $allergen)
+                @forelse($Allergene as $allergen)
                     <tr>
                         <td>{{ $allergen->code }}</td>
                         <td>{{ $allergen->name }}</td>
@@ -111,6 +116,9 @@
     </div>
     <!-- Section für Newsletter Anmeldung -->
     <section id="newsletter">
+        @if(session()->has('success'))
+            <?php Alert::success('Erfolg','Anmeldung für den Newsletter erfolgreich'); ?>;
+        @endif
         @foreach ($errors->all() as $error)
             <?php Alert::error('Fehler', $error); ?>;
         @endforeach

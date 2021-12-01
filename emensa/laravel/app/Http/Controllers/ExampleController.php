@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Kategorie;
+use App\Models\Gericht;
 use Illuminate\Http\Request;
 use DB;
 class ExampleController extends Controller
@@ -11,11 +12,11 @@ class ExampleController extends Controller
     }
 
     public function kategorie(){
-        return view('examples.m4_6b_kategorie')->with('kategorien', DB::table('kategorie')->orderBy('name','asc')->get());
+        return view('examples.m4_6b_kategorie')->with('kategorien', Kategorie::orderBy('name','asc')->get());
     }
 
     public function gerichte(){
-        return view('examples.m4_6c_gerichte')->with('gerichte', DB::table('gericht')->where('preis_intern','>','2.0')->orderBy('name')->get());
+        return view('examples.m4_6c_gerichte')->with('gerichte', Gericht::where('preis_intern','>','2.0')->orderBy('name')->get());
     }
 
     public function pick_page(Request $request){
