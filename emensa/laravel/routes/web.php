@@ -6,6 +6,7 @@ use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NLAdminPanelController;
 use App\Http\Controllers\ExampleController;
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,3 +47,15 @@ Route::get('m4_6a_queryparameter',[ExampleController::class, 'queryparameter']);
 Route::get('m4_6b_kategorie',[ExampleController::class,'kategorie']);
 Route::get('m4_6c_gerichte',[ExampleController::class,'gerichte']);
 Route::get('m4_6d_layout',[ExampleController::class,'pick_page']);
+
+
+/*
+Authentication routes
+*/
+
+Route::get('login',[AuthController::class, 'indexLogin']);
+Route::get('register',[AuthController::class, 'indexRegister']);
+Route::get('signout',[AuthController::class, 'signOut']);
+Route::post('custom-login',[AuthController::class, 'login']);
+Route::post('custom-register',[AuthController::class, 'register']);
+

@@ -45,6 +45,10 @@
                     <a href="/#Zahlen" class="header_links">Zahlen</a>
                     <a href="/#Newsletter" class="header_links">Kontakt</a>
                     <a href="/#Wichtig" class="header_links">Wichtig für Uns</a>
+                    @if(!Auth::guest())
+                    <a href="/signout" class="header_links">Ausloggen</a>
+                    @endif
+                    
                 </div>
             </div>
 

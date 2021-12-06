@@ -16,11 +16,24 @@ class User extends Authenticatable
      * The attributes that are mass assignable.
      *
      * @var string[]
+     * 
      */
+
+    public function getAuthPassword()
+    {
+        return $this->passwort;
+    }
+
+    protected $table = 'benutzer';
+    public $timestamps = false;
     protected $fillable = [
-        'name',
+        'passwort',
+        'admin',
+        'anzahlfehler',
+        'anzahlanmeldungen',
+        'letzteanmeldung',
+        'letzterfehler',
         'email',
-        'password',
     ];
 
     /**
@@ -29,7 +42,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
+        'passwort',
         'remember_token',
     ];
 
@@ -41,4 +54,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isAdmin(){
+        return $this->admin;
+    }
 }
