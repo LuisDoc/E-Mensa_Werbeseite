@@ -58,4 +58,8 @@ class User extends Authenticatable
     public function isAdmin(){
         return $this->admin;
     }
+    
+    public function getName(){
+        return $this->email;
+    }
 }

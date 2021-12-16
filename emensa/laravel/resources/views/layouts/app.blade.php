@@ -45,10 +45,16 @@
                     <a href="/#Zahlen" class="header_links">Zahlen</a>
                     <a href="/#Newsletter" class="header_links">Kontakt</a>
                     <a href="/#Wichtig" class="header_links">Wichtig für Uns</a>
-                    @if(!Auth::guest())
-                    <a href="/signout" class="header_links">Ausloggen</a>
+
+                    @if (!Auth::guest())
+                        <a title="Abmelden " href="/abmelden" class="header_links">
+                            {{ auth()->User()->getName() }}
+                        </a>
+                    @else
+                        <a href="/anmeldung" class="header_links">Anmelden</a>
+                        <a href="/registrieren" class="header_links">Registrieren</a>
                     @endif
-                    
+
                 </div>
             </div>
 
