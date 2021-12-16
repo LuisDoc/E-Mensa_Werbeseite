@@ -13,10 +13,10 @@
                 <a class="affiliates" href="#">Impressum</a>
             </span>
         <span class="social">
-            <a href="#"><img class="icon" src="/werbeseite/sources/facebook.png" alt="facebook"></a>
-            <a href="#"><img class="icon" src="/werbeseite/sources/googlep.png" alt="googleplus"></a>
-            <a href="#"><img class="icon" src="/werbeseite/sources/linkedIn.png" alt="linkedIn"></a>
-            <a href="#"><img class="icon" src="/werbeseite/sources/twitter.png" alt="twitter"></a>
+            <a href="#"><img class="icon" src="sources/facebook.png" alt="facebook"></a>
+            <a href="#"><img class="icon" src="sources/googlep.png" alt="googleplus"></a>
+            <a href="#"><img class="icon" src="sources/linkedIn.png" alt="linkedIn"></a>
+            <a href="#"><img class="icon" src="sources/twitter.png" alt="twitter"></a>
             </span>
     </nav>
 </div>

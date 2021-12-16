@@ -10,6 +10,10 @@
     if(!isset($_SESSION['token'])){
         $_SESSION['token']=bin2hex(random_bytes(45));
     }
+    
+    if(isset($_SESSION["userid"])){
+        echo "<h1>Angemeldet als: " . $_SESSION['useremail']. " </h1>";
+    }
 
 ?>
 <!DOCTYPE html>
@@ -41,11 +45,13 @@
         <img class = title_picture_itself src="sources/mensa-fh-aachen.jpg"
              alt="Picture not found">
     </div>
+   
 </section>
 
 <!-- Section für Ankündigungen -->
 <section>
     <h3 class = ankuendigungen_heading>
+        
         <a name ="Ankündigungen">Bald gibt es Essen auch online :)</a>
     </h3>
     <div class ="ankuendigungen_text">
