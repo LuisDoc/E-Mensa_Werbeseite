@@ -23,7 +23,7 @@ class AuthController extends Controller
         ]);
 
         if($validator->fails()){
-            return redirect('/login')->withErrors($validator)->withInput();
+            return redirect('/anmeldung')->withErrors($validator)->withInput();
         }
 
         if(!$request->session()->has('attempts')){
@@ -44,7 +44,7 @@ class AuthController extends Controller
             
 
             Alert::error('Fehler', 'Benutzerdaten stimmen nicht überein');
-            return redirect('/login')->withErrors($validator);
+            return redirect('/anmeldung')->withErrors($validator);
         }
 
         $benutzer = User::where('email', $request->email)->first();
@@ -76,7 +76,7 @@ class AuthController extends Controller
         ]);
         
         if($validator->fails()){
-            return redirect('/register')->withErrors($validator)->withInput();
+            return redirect('/registrierung')->withErrors($validator)->withInput();
         }
 
         

@@ -9,7 +9,7 @@
                     <h3 class="card-header text-center">Register User</h3>
                     <div class="card-body">
 
-                        <form action="/custom-register" method="POST">
+                        <form action="/registrierung_verifizieren" method="POST">
                             @csrf
 
                             <div class="form-group mb-3">

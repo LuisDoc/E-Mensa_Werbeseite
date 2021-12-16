@@ -53,9 +53,9 @@ Route::get('m4_6d_layout',[ExampleController::class,'pick_page']);
 Authentication routes
 */
 
-Route::get('login',[AuthController::class, 'indexLogin']);
-Route::get('register',[AuthController::class, 'indexRegister']);
+Route::get('anmeldung',[AuthController::class, 'indexLogin']);
+Route::get('registrierung',[AuthController::class, 'indexRegister']);
 Route::get('signout',[AuthController::class, 'signOut']);
-Route::post('custom-login',[AuthController::class, 'login']);
-Route::post('custom-register',[AuthController::class, 'register']);
+Route::post('anmelden_verifizieren',[AuthController::class, 'login']);
+Route::post('registrierung_verifizieren',[AuthController::class, 'register']);
 

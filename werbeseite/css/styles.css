@@ -54,7 +54,7 @@ h3{
 .header_menu_reiter{
     margin-left: 1.5em;
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto auto;
     justify-content:center;
     align-content: center;
 }
