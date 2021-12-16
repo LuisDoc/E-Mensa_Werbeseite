@@ -23,17 +23,17 @@ class AuthController extends Controller
         ]);
 
         if($validator->fails()){
-            return redirect('/anmeldung')->withErrors($validator)->withInput();
+            return redirect('/login')->withErrors($validator)->withInput();
         }
 
         if(!$request->session()->has('attempts')){
             session()->put('attempts',0);
         }
-        
-            
+
+
         $credentials = $request->only('email', 'passwort');
         if(!Auth::attempt([
-            'email' => $request->email, 
+            'email' => $request->email,
             'password' => $request->passwort]
         )){
             $attempts = session()->get('attempts');
@@ -41,14 +41,14 @@ class AuthController extends Controller
             if(!$request->session()->has('letzter_fehler')){
                 session()->put('letzter_fehler',Carbon::now());
             }
-            
+
 
             Alert::error('Fehler', 'Benutzerdaten stimmen nicht überein');
             return redirect('/anmeldung')->withErrors($validator);
         }
 
         $benutzer = User::where('email', $request->email)->first();
-        
+
         $fehler = $benutzer->anzahlfehler;
         $benutzer->anzahlfehler= $fehler+ session()->get('attempts');
         $anmeldungen = $benutzer->anzahlanmeldungen;
@@ -58,7 +58,7 @@ class AuthController extends Controller
             $benutzer->letzterfehler = session()->get('letzter_fehler');
         }
         $benutzer->save();
-    
+
 
         Alert::success('Erfolg', 'Benutzer eingeloggt');
         return redirect('/');
@@ -74,12 +74,12 @@ class AuthController extends Controller
             'password' =>'required|string|min:8|confirmed|max:200',
             'password_confirmation' => 'required',
         ]);
-        
+
         if($validator->fails()){
-            return redirect('/registrieren')->withErrors($validator)->withInput();
+            return redirect('/registrierung')->withErrors($validator)->withInput();
         }
 
-        
+
         User::create([
             'email' =>$request->email,
             'passwort' => Hash::make($request->password),
