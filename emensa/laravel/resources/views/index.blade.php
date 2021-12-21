@@ -47,13 +47,21 @@
                         <td>{{ $gericht->name }}</td>
                         <td>{{ $gericht->preis_intern }}</td>
                         <td>{{ $gericht->preis_extern }}</td>
-                        <td> Noch kein Bild vorhanden </td>
+                        <td>
+                            @if ($gericht->bildname)
+                                <img class="speiseplanimage" src="/img/gerichte/{{ $gericht->bildname }}"
+                                    alt="gericht_{{ $gericht->id }}">
+                            @else
+                                <img class="speiseplanimage" src="/img/gerichte/00_image_missing.jpg"
+                                    alt="gericht_{{ $gericht->id }}">
+                            @endif
+                        </td>
                         @if (!empty($AllergeneProGericht[$loop->index]))
                             <td>
-                            @foreach($AllergeneProGericht[$loop->index] as $allergen)
-                                {{$allergen->code}}
-                                @if( !$loop->last) , @endif
-                            @endforeach
+                                @foreach ($AllergeneProGericht[$loop->index] as $allergen)
+                                    {{ $allergen->code }}
+                                    @if (!$loop->last) , @endif
+                                @endforeach
                             </td>
                         @else
                             <td> /</td>
@@ -116,8 +124,8 @@
     </div>
     <!-- Section für Newsletter Anmeldung -->
     <section id="newsletter">
-        @if(session()->has('success'))
-            <?php Alert::success('Erfolg','Anmeldung für den Newsletter erfolgreich'); ?>;
+        @if (session()->has('success'))
+            <?php Alert::success('Erfolg', 'Anmeldung für den Newsletter erfolgreich'); ?>;
         @endif
         @foreach ($errors->all() as $error)
             <?php Alert::error('Fehler', $error); ?>;

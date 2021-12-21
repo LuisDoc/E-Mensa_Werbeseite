@@ -12,6 +12,7 @@ use App\Models\Kategorie;
 use App\Models\Newsletter;
 use App\Models\Allergen;
 use DB;
+use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 class HomeController extends Controller
 {
@@ -85,6 +86,8 @@ class HomeController extends Controller
             Weiterleitung an View
         */
         //Alert::success('Hello');
+        Log::channel('authentication')->info('Homepage requested');
+
         return view('index')
         ->with('Gerichte',$gerichte)
         ->with('Allergene',$Allergene)
