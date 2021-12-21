@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Rules\DomainRules;
 use Hash;
+use DB;
 use RealRashid\SweetAlert\Facades\Alert;
 class AuthController extends Controller
 {
@@ -46,19 +47,24 @@ class AuthController extends Controller
             Alert::error('Fehler', 'Benutzerdaten stimmen nicht überein');
             return redirect('/anmeldung')->withErrors($validator);
         }
+        DB::beginTransaction();
+        try{
+            $benutzer = User::where('email', $request->email)->first();
 
-        $benutzer = User::where('email', $request->email)->first();
-
-        $fehler = $benutzer->anzahlfehler;
-        $benutzer->anzahlfehler= $fehler+ session()->get('attempts');
-        $anmeldungen = $benutzer->anzahlanmeldungen;
-        $benutzer->anzahlanmeldungen = $anmeldungen +1;
-        $benutzer->letzteanmeldung = Carbon::now();
-        if($request->session()->has('letzter_fehler')){
-            $benutzer->letzterfehler = session()->get('letzter_fehler');
+            $fehler = $benutzer->anzahlfehler;
+            $benutzer->anzahlfehler= $fehler+ session()->get('attempts');
+            $anmeldungen = $benutzer->anzahlanmeldungen;
+            $benutzer->anzahlanmeldungen = $anmeldungen +1;
+            $benutzer->letzteanmeldung = Carbon::now();
+            if($request->session()->has('letzter_fehler')){
+                $benutzer->letzterfehler = session()->get('letzter_fehler');
+            }
+            $benutzer->save();
         }
-        $benutzer->save();
-
+        catch(Exception $e){
+            DB::rollback();
+        }
+        DB::commit();
 
         Alert::success('Erfolg', 'Benutzer eingeloggt');
         return redirect('/');
@@ -79,17 +85,23 @@ class AuthController extends Controller
             return redirect('/registrieren')->withErrors($validator)->withInput();
         }
 
-
-        User::create([
-            'email' =>$request->email,
-            'passwort' => Hash::make($request->password),
-            'letzteanmeldung' => Carbon::now(),
-            'admin' => false,
-            'anzahlanmeldungen'=>0,
-            'anzahlfehler' =>0,
-            'letzterfehler' =>null,
-
-        ]);
+        DB::beginTransaction();
+        try{
+            User::create([
+                'email' =>$request->email,
+                'passwort' => Hash::make($request->password),
+                'letzteanmeldung' => Carbon::now(),
+                'admin' => false,
+                'anzahlanmeldungen'=>0,
+                'anzahlfehler' =>0,
+                'letzterfehler' =>null,
+    
+            ]);
+        }catch(Exception $e){
+            DB::rollback();
+        }
+        
+        DB::commit();
         Alert::success('Erfolg', 'Benutzer registriert');
         return redirect('/');
     }

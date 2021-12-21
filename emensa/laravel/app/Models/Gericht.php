@@ -18,7 +18,8 @@ class Gericht extends Model
         'vegetarisch',
         'vegan',
         'preis_intern',
-        'preis_extern'
+        'preis_extern',
+        'bildname'
     ];
 
     public $timestamps = false;

@@ -50,10 +50,16 @@
                         <a title="Abmelden " href="/abmelden" class="header_links">
                             {{ auth()->User()->getName() }}
                         </a>
+                        @if (auth()->User()->isAdmin())
+                            <a title="Admin Panel " href="/showNewsletterAdmin" class="header_links">
+                                Admin Panel
+                            </a>
+                        @endif
                     @else
                         <a href="/anmeldung" class="header_links">Anmelden</a>
                         <a href="/registrieren" class="header_links">Registrieren</a>
                     @endif
+
 
                 </div>
             </div>
