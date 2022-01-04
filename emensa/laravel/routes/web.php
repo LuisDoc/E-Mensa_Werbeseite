@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NLAdminPanelController;
 use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BewertungenController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,6 +49,11 @@ Route::get('m4_6b_kategorie',[ExampleController::class,'kategorie']);
 Route::get('m4_6c_gerichte',[ExampleController::class,'gerichte']);
 Route::get('m4_6d_layout',[ExampleController::class,'pick_page']);
 
+/*
+Bewertungen | Meilenstein 6
+*/
+Route::get('bewertungen/{id}',[BewertungenController::class,'bewertung']);
+Route::get('sendBewertung',[BewertungenController::class,'addBewertung']);
 
 /*
 Authentication routes

@@ -39,6 +39,7 @@
                     <th>Preise extern</th>
                     <th>Bilder</th>
                     <th>Allergene</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -66,6 +67,13 @@
                         @else
                             <td> /</td>
                         @endif
+                        <td>
+                            <div class="wrapper">
+                                <a class="btn_bewerten" href="/bewertungen/{{ $gericht->id }}">
+                                    bewerten
+                                </a>
+                            </div>
+                        </td>
                     </tr>
                 @empty
                     <tr>
