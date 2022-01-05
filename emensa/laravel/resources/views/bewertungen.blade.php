@@ -1,42 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <style>
-        .box {
-            background: #fff;
-            padding: 16px 24px;
-            position: relative;
-            border-radius: 8px;
-            box-shadow: 0 0 0 1px rgba(0, 0, 0, .01);
-        }
-
-        .box::after {
-            position: absolute;
-            content: "";
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: -1;
-            height: 100%;
-            width: 100%;
-            transform: scale(0.9) translateZ(0);
-            filter: blur(15px);
-            background: linear-gradient(to left, #ff5770, #e4428d, #c42da8, #9e16c3, #6501de, #9e16c3, #c42da8, #e4428d, #ff5770);
-            background-size: 200% 200%;
-            animation: animateGlow 1.25s linear infinite;
-        }
-
-        @keyframes animateGlow {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            100% {
-                background-position: 200% 50%;
-            }
-        }
-
-    </style>
     <h1>Bewertung</h1>
     <h3>{{ $gericht->name }}</h3>
     @if ($gericht->bildname)
@@ -79,27 +43,39 @@
             </thead>
             <tbody>
                 @foreach ($bewertungen as $bewertung)
-                    <tr class="box">
-                        <td>{{ $bewertung->bewertung }}</td>
-                        <td>{{ $bewertung->bemerkung }}</td>
-                        <td>{{ $bewertung->user->email }}</td>
-                        <td>{{ $bewertung->created_at }}</td>
-                        @if (Auth()->User()->admin)
-                            <td>
-                                @if ($bewertung->highlighted == 1)
-                                    <a class="btn_wunschgericht" href="/highlightBewertung/{{ $bewertung->id }}">
-                                        Hervorhebung aufheben
-                                    </a>
-                                @else
-                                    <a class="btn_wunschgericht" href="/highlightBewertung/{{ $bewertung->id }}">
-                                        Hervorheben
-                                    </a>
-                                @endif
-                            </td>
-                        @endif
+                    @if ($bewertung->highlighted)
+                        <tr class="box">
+                        @else
+                        <tr>
+                    @endif
+
+                    <td>
+                        @for ($i = 0; $i < $bewertung->bewertung; $i++)
+                            <p class="sternebewertung">
+                                <input type="radio" checked="checked" disabled><label></label>
+                            </p>
+                        @endfor
+                    </td>
+                    <td>{{ $bewertung->bemerkung }}</td>
+                    <td>{{ $bewertung->user->email }}</td>
+                    <td>{{ $bewertung->created_at }}</td>
+                    @if (Auth()->User()->admin)
+                        <td>
+                            @if ($bewertung->highlighted == 1)
+                                <a class="btn_wunschgericht" href="/highlightBewertung/{{ $bewertung->id }}">
+                                    Hervorhebung aufheben
+                                </a>
+                            @else
+                                <a class="btn_wunschgericht" href="/highlightBewertung/{{ $bewertung->id }}">
+                                    Hervorheben
+                                </a>
+                            @endif
+                        </td>
+                    @endif
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+    <br><br><br><br><br>
 @endsection

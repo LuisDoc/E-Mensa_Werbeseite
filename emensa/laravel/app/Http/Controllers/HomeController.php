@@ -8,6 +8,7 @@ use App\Http\Requests\WunschgerichtRequest;
 use App\Models\Ersteller;
 use App\Models\Wunschgericht;
 use App\Models\Gericht;
+use App\Models\Bewertung;
 use App\Models\Kategorie;
 use App\Models\Newsletter;
 use App\Models\Allergen;
@@ -88,7 +89,10 @@ class HomeController extends Controller
         //Alert::success('Hello');
         Log::channel('authentication')->info('Homepage requested');
 
+        $bewertungen = Bewertung::where('highlighted',1)->get();
+
         return view('index')
+        ->with('bewertungen',$bewertungen)
         ->with('Gerichte',$gerichte)
         ->with('Allergene',$Allergene)
         ->with('AllergeneProGericht',$allergeneProGericht)
@@ -129,5 +133,39 @@ class HomeController extends Controller
 
         Alert::success('Erfolg','Ihr Wunschgericht wurde erfolgreich weitergeleitet');
         return redirect('/requestMeal');
+    }
+
+    public function testAddGericht(){
+
+      
+        $nextId = Gericht::max('id');
+        $gericht = new Gericht();
+        $gericht->id = $nextId + 1 ;
+        $gericht->name= "testgericht mit ID".$nextId;
+        $gericht->beschreibung="Testbeschreibung";
+        $gericht->preis_intern = 2;
+        $gericht->preis_extern = 4;
+        $gericht->erfasst_am = Carbon::now();
+        
+        $gericht->vegetarisch = "yEs";
+        $gericht->vegan = " N o ";
+        
+        $gericht->save();
+
+
+        $nextId = Gericht::max('id');
+        $gericht = new Gericht();
+        $gericht->id = $nextId + 1 ;
+        $gericht->name= "testgericht mit ID".$nextId;
+        $gericht->beschreibung="Testbeschreibung";
+        $gericht->preis_intern = 2;
+        $gericht->preis_extern = 4;
+        $gericht->erfasst_am = Carbon::now();
+        
+        $gericht->vegetarisch = "N o";
+        $gericht->vegan = " y e s ";
+        
+        $gericht->save();
+        return redirect('/');
     }
 }

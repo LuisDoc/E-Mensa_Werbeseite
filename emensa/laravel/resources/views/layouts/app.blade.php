@@ -7,6 +7,7 @@
     <!-- Titel der Webseite unter Tabs-->
     <title>Ihre E-Mensa</title>
     <!-- Einbindung von Stylesheet und fonts/sources-->
+    <link rel="stylesheet" href="/css/bewertungen.css">
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/adminPanelStyle.css">
     <link rel="stylesheet" href="/css/allergenStyle.css">
@@ -42,6 +43,7 @@
                 <div class="header_menu_reiter">
                     <a href="/#Ankündigungen" class="header_links">Ankündigung</a>
                     <a href="/#Speisekarte" class="header_links">Speisen</a>
+                    <a href="/#Bewertungen" class="header_links">Bewertungen</a>
                     <a href="/#Zahlen" class="header_links">Zahlen</a>
                     <a href="/#Newsletter" class="header_links">Kontakt</a>
                     <a href="/#Wichtig" class="header_links">Wichtig für Uns</a>

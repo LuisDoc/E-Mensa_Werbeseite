@@ -1,0 +1,113 @@
+
+/* Sternebewertung */
+
+.bewertung{
+    display: flex;
+    justify-content:center;
+}
+
+span#Bewertung label {
+    line-height: 45px;
+    cursor: Pointer;
+   }
+   
+   span#Bewertung input[type="radio"] {
+    /*display: None;*/ 
+   }
+   
+   p.sternebewertung {
+    float: Left;
+   }
+   
+   p.sternebewertung:not(:checked) > input {
+    display: None;
+   }
+   
+   p.sternebewertung:not(:checked) > label {
+    float: Right;
+    width: 1em;
+    padding: 0 .1em;
+    overflow: Hidden;
+    white-space: Nowrap;
+    cursor: Pointer;
+    font-size: 200%;
+    line-height: 1.2;
+    color: #D0D0D0;
+    text-shadow: 1px 1px #B0B0B0, 2px 2px #606060, .1em .1em .2em rgba(0,0,0,.5);
+    transition: all .5s;
+   }
+   
+   p.sternebewertung:not(:checked) > label::before {
+    content: '★ ';
+   }
+   
+   p.sternebewertung > input:checked ~ label {
+    color: #FFD700;
+    text-shadow: 1px 1px #C06000, 2px 2px #904000, .1em .1em .2em rgba(0,0,0,.5);
+    animation: twinkle 1s ease-in-out infinite alternate;
+   }
+   
+   p.sternebewertung:not(:checked) > label:hover,
+   p.sternebewertung:not(:checked) > label:hover ~ label {
+    color: #FECF41;
+    text-shadow: 1px 1px #F29E02, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+   }
+   
+   p.sternebewertung > input:checked + label:hover,
+   p.sternebewertung > input:checked + label:hover ~ label,
+   p.sternebewertung > input:checked ~ label:hover,
+   p.sternebewertung > input:checked ~ label:hover ~ label,
+   p.sternebewertung > label:hover ~ input:checked ~ label {
+    color: #FBB600;
+    text-shadow: 1px 1px #F8BA01, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+   }
+   
+   @keyframes twinkle {
+    to {
+     text-shadow: 1px 1px #FFE653, 2px 2px #FFF5BF, .1em .1em .2em rgba(0,0,0,.5);
+    }
+   }
+   .sterne::after{
+    content: 'content: '★ ';
+   }
+   .sterne::before{
+    content: 'content: '★ ';
+   }
+
+   /*
+   Highlightes Boxes
+   */
+
+   .box {
+    background: #ff8d9eec;
+    padding: 16px 50px;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .01);   
+}
+
+.box::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    transform: scale(0.9) translateZ(0);
+    filter: blur(15px);
+    background: linear-gradient(to left, #ff5770, #e4428d, #c42da8, #9e16c3, #6501de, #9e16c3, #c42da8, #e4428d, #ff5770);
+    background-size: 200% 200%;
+    animation: animateGlow 1.25s linear infinite;
+}
+
+@keyframes animateGlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}

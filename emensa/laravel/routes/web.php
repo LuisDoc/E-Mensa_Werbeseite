@@ -24,6 +24,11 @@ Route::post('/SignUpNewsletter',[NewsletterController::class, 'signupNL']);
 Route::get('/',[HomeController::class, 'index']);
 
 
+/*
+Testrouten
+*/
+Route::get('testAddGericht',[HomeController::class,'testAddGericht']);
+
 
 /*
 Wunschgerichte Webseite

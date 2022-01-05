@@ -23,6 +23,39 @@ class Gericht extends Model
         'bildname'
     ];
 
+    public function getPreisInternAttribute($value){
+        return number_format($value, 2, ',', '');
+    }
+
+    public function getPreisExternAttribute($value){
+        return number_format($value, 2, ',', '');
+    }
+
+    public function setVegetarischAttribute($value){
+        $trimmed = str_replace(' ', '', $value);
+        if(strtolower($trimmed)=="yes" )
+        {
+            $this->attributes['vegetarisch'] = true;
+        }
+        else if(strtolower($trimmed) =="no")
+        {
+            $this->attributes['vegetarisch'] = false;
+        }
+    }
+    
+    public function setVeganAttribute($value){
+        $trimmed = str_replace(' ', '', $value);
+        if(strtolower($trimmed)=="yes" )
+        {
+            $this->attributes['vegan'] = true;;
+        }
+        else if (strtolower($trimmed) =="no")
+        {
+            $this->attributes['vegan'] = false;
+        }
+    }
+
+
     public $timestamps = false;
 
     public function kategorien(){
