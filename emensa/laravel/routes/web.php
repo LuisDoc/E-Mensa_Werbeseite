@@ -53,7 +53,7 @@ Route::get('m4_6d_layout',[ExampleController::class,'pick_page']);
 Bewertungen | Meilenstein 6
 */
 Route::get('bewertungen/{id}',[BewertungenController::class,'bewertung']);
-Route::get('sendBewertung',[BewertungenController::class,'addBewertung']);
+Route::get('sendBewertung/{id}',[BewertungenController::class,'addBewertung']);
 
 /*
 Authentication routes

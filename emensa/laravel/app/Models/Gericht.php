@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Kategorie;
 use App\Models\Allergen;
+use App\Models\Bewertung;
 class Gericht extends Model
 {
     use HasFactory;
@@ -30,5 +31,9 @@ class Gericht extends Model
 
     public function allergene(){
         return $this->belongsToMany(Allergen::class,'gericht_hat_allergen', 'gericht_id','code')->orderBy('code');
+    }
+
+    public function bewertungen(){
+        return $this->hasMany(Bewertung::class);
     }
 }

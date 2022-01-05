@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use App\Models\Bewertung;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -64,5 +64,9 @@ class User extends Authenticatable
     }
     public function getEmail(){
         return $this->email;
+    }
+
+    public function bewertungen(){
+        return $this->hasMany(Bewertung::class, 'user_id');
     }
 }
