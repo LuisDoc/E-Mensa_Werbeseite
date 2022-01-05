@@ -69,7 +69,7 @@
                         @endif
                         <td>
                             <div class="wrapper">
-                                <a class="btn_bewerten" href="/bewertungen/{{ $gericht->id }}">
+                                <a class="btn_bewerten" href="/bewertung/{{ $gericht->id }}">
                                     bewerten
                                 </a>
                             </div>
@@ -112,6 +112,26 @@
     </div>
     <br>
     <br>
+    <!-- Meine Bewertungen -->
+    <h3>Bewertungen</h3>
+    <div>
+        <span class="wrapper">
+            <a class="btn_wunschgericht" href="/bewertungen">
+                Letzten 30 Bewertungen
+            </a>
+        </span>
+        <br>
+        @if (Auth()->User())
+            <span class="wrapper">
+                <a class="btn_wunschgericht" href="/meineBewertungen">
+                    Meine Bewertungen
+                </a>
+            </span>
+        @endif
+    </div>
+    <h5>Highlighted</h5>
+
+
     <!-- Button zur Webseite zur Gerichterstellung -->
     <h3>
         Ihr Wunschgericht ist nicht dabei ?

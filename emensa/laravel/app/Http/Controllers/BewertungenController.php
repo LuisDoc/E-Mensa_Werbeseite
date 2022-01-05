@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bewertung;
 use App\Models\Gericht;
-
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 
 class BewertungenController extends Controller
@@ -21,9 +21,8 @@ class BewertungenController extends Controller
             return redirect('/anmeldung');
         }
         
-        $bewertungen = Bewertung::orderByDesc('created_at')->limit(30)->get();
-        $bewertung = Bewertung::find(1);
-        dd($bewertung->user());       //Wenn der Nutzer bereits angemeldet ist
+        $bewertungen = Bewertung::where('gericht_id',$request->id)->orderByDesc('created_at')->limit(30)->get();
+        
         return view('bewertungen')->with('gericht',$gericht)->with('bewertungen',$bewertungen);
     }
     /*
@@ -34,16 +33,16 @@ class BewertungenController extends Controller
         $gericht = Gericht::find($id);
         $user_id = Auth()->User()->id;
         
+        //Validierung
         $attributes = $request->validate([
-            'bemerkung' => 'min:5'
+            'bemerkung' => 'min:5',
         ]);
 
-        //Validierung der Bewertung
-        if($bewertung->count_chars < 5){
-            Alert::error('Fehler','Bitte geben Sie eine Bewertung, mit mindestens 5 Zeichen ein.');
-            return view('bewertungen')->with('gericht',$gericht);
+        if($request->bewertung == null){
+            Alert::error('Fehler','Geben Sie eine Bewertung');
+            return redirect()->back();
         }
-
+        
         Bewertung::create([
             'highlighted' => false,
             'bewertung' => $request->bewertung,
@@ -51,5 +50,42 @@ class BewertungenController extends Controller
             'user_id' => auth()->user()->id,
             'gericht_id' => $gericht->id,
         ]);
+        Alert::success('Erfolg','Die Bewertung wurde erfolgreich erstellt');
+        return redirect()->back();
+    }
+
+    public function highlight($id){
+        $bewertung = Bewertung::find($id);
+        //Toggle Highlight Status
+        if($bewertung->highlighted == 1){
+           $bewertung->highlighted = 0;
+           $bewertung->save();
+           Alert::success('Erfolg','Die Markierung der Bewertung wurde erfolgreich aufgehoben');
+        }
+        else{
+           $bewertung->highlighted = 1;
+           $bewertung->save();
+           Alert::success('Erfolg','Die Markierung der Bewertung wurde erfolgreich gesetzt');
+        }
+        return redirect()->back();
+    }
+
+    
+    public function MyBewertungen(){
+        $bewertungen = auth()->user()->bewertungen()->orderBy('created_at', 'desc')->get();;
+
+        return view('meineBewertungen')->with('bewertungen', $bewertungen);
+    }
+
+    public function destroy($id){
+        $Bewertung = Bewertung::find($id);
+        $Bewertung->delete();
+        return redirect()->back();
+    }
+
+    public function bewertungen(){
+        $bewertungen = Bewertung::orderByDesc('created_at')->limit(30)->get();
+
+        return view('letzten30bewertungen')->with('bewertungen', $bewertungen);
     }
 }

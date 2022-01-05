@@ -129,4 +129,6 @@ class AuthController extends Controller
         Log::channel('authentication')->info('User '.$email.' has been logged out');
         return redirect('/');
     }
+
+
 }

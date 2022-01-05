@@ -10,7 +10,7 @@ class Bewertung extends Model
 {
 
     protected $table = "bewertung";
-
+    public $timestamps = false;
     protected $fillable = [
         'user_id',
         'gericht_id',
@@ -23,7 +23,7 @@ class Bewertung extends Model
 
 
     public function user(){
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     public function gericht(){
