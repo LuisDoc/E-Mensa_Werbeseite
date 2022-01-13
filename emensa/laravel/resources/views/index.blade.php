@@ -112,59 +112,70 @@
     </div>
     <br>
     <br>
-    <!-- Meine Bewertungen -->
+    <!-- Hervorgehobene Bewertungen -->
     <h3 class=ankuendigungen_heading>
         <a name="Bewertungen">Meinungen unserer Gäste</a>
     </h3>
-    <div class="speisen_tabelle">
-        <table id="menu">
-            <thead>
-                <tr>
-                    <th>Bewertung</th>
-                    <th>Bemerkung</th>
-                    <th>Author</th>
-                    <th>Datum</th>
-                    @if (!Auth::Guest())
-                        @if (Auth()->User()->admin)
-                            <th></th>
-                        @endif
-                    @endif
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($bewertungen as $bewertung)
+    @if ($bewertungen->count() > 0)
+        <div class="speisen_tabelle">
+            <table id="menu">
+                <thead>
                     <tr>
-                        <td>
-                            @for ($i = 0; $i < $bewertung->bewertung; $i++)
-                                <p class="sternebewertung">
-                                    <input type="radio" checked="checked" disabled><label></label>
-                                </p>
-                            @endfor
-                        </td>
-                        <td>{{ $bewertung->bemerkung }}</td>
-                        <td>{{ $bewertung->user->email }}</td>
-                        <td>{{ $bewertung->created_at }}</td>
+                        <th>Bewertung</th>
+                        <th>Bemerkung</th>
+                        <th>Author</th>
+                        <th>Datum</th>
                         @if (!Auth::Guest())
                             @if (Auth()->User()->admin)
-                                <td>
-                                    @if ($bewertung->highlighted == 1)
-                                        <a class="btn_wunschgericht" href="/highlightBewertung/{{ $bewertung->id }}">
-                                            Hervorhebung aufheben
-                                        </a>
-                                    @else
-                                        <a class="btn_wunschgericht" href="/highlightBewertung/{{ $bewertung->id }}">
-                                            Hervorheben
-                                        </a>
-                                    @endif
-                                </td>
+                                <th></th>
                             @endif
                         @endif
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-    <br><br><br>
+                </thead>
+                <tbody>
+                    @foreach ($bewertungen as $bewertung)
+                        <tr>
+                            <td>
+                                @for ($i = 0; $i < $bewertung->bewertung; $i++)
+                                    <p class="sternebewertung">
+                                        <input type="radio" checked="checked" disabled><label></label>
+                                    </p>
+                                @endfor
+                            </td>
+                            <td>{{ $bewertung->bemerkung }}</td>
+                            <td>{{ $bewertung->user->email }}</td>
+                            <td>{{ $bewertung->created_at }}</td>
+                            @if (!Auth::Guest())
+                                @if (Auth()->User()->admin)
+                                    <td>
+                                        @if ($bewertung->highlighted == 1)
+                                            <a class="btn_wunschgericht" href="/highlightBewertung/{{ $bewertung->id }}">
+                                                Hervorhebung aufheben
+                                            </a>
+                                        @else
+                                            <a class="btn_wunschgericht" href="/highlightBewertung/{{ $bewertung->id }}">
+                                                Hervorheben
+                                            </a>
+                                        @endif
+                                    </td>
+                                @endif
+                            @endif
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <br><br><br>
+    @else
+        <a href="#Speisekarte">
+            <h5>Es wurden noch keine Bewertungen hervorgehoben.</h5>
+            <h5>Bewerten Sie jetzt unsere Gerichte</h5>
+        </a>
+
+
+    @endif
+
+
     <!-- Weiterleitungen -->
     <div>
         <span class="wrapper">
